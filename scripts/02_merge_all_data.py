@@ -53,6 +53,10 @@ def enrich_pagos_with_due_dates():
     logger.info(f"Pagos: {len(pagos):,} registros")
     logger.info(f"Préstamos: {len(prestamos):,} registros")
 
+    # Normalizar tipos
+    pagos['cedula'] = pagos['cedula'].astype(str)
+    prestamos['cedula'] = prestamos['cedula'].astype(str)
+
     # Convertir fechas
     pagos['payment_date'] = pd.to_datetime(pagos['payment_date'])
     prestamos['loan_date'] = pd.to_datetime(prestamos['loan_date'])
@@ -128,6 +132,7 @@ def aggregate_payment_metrics(pagos):
     # Flatten column names
     payment_metrics.columns = ['_'.join(col).strip('_') for col in payment_metrics.columns.values]
     payment_metrics.rename(columns={'cedula': 'cedula'}, inplace=True)
+    payment_metrics['cedula'] = payment_metrics['cedula'].astype(str)
 
     # Calcular métricas adicionales
     logger.info("\nCalculando métricas adicionales...")
@@ -185,11 +190,13 @@ def create_master_dataset():
     # 1. Cargar clientes
     logger.info("\n1. Cargando clientes...")
     clientes = pd.read_csv(CLIENTES_CLEAN)
+    clientes['cedula'] = clientes['cedula'].astype(str)
     logger.info(f"   {len(clientes):,} clientes")
 
     # 2. Cargar HCPN
     logger.info("\n2. Cargando HCPN...")
     hcpn = pd.read_csv(HCPN_CLEAN)
+    hcpn['cedula'] = hcpn['cedula'].astype(str)
     logger.info(f"   {len(hcpn):,} registros HCPN")
 
     # 3. Enriquecer pagos
@@ -205,10 +212,12 @@ def create_master_dataset():
     cupo = pd.read_csv(SOLICITUDES_CUPO_CLEAN)
 
     # Agregar última solicitud de cupo por cliente
+    cupo['cedula'] = cupo['cedula'].astype(str)
     cupo_last = cupo.sort_values('request_date', ascending=False).groupby('cedula').first().reset_index()
     cupo_last = cupo_last[['cedula', 'requested_loc', 'credit_study_score', 'credit_study_result', 'risk_profile']]
     cupo_last = cupo_last.add_prefix('last_cupo_')
     cupo_last.rename(columns={'last_cupo_cedula': 'cedula'}, inplace=True)
+    cupo_last['cedula'] = cupo_last['cedula'].astype(str)
 
     logger.info(f"   {len(cupo_last):,} clientes con solicitud de cupo")
 

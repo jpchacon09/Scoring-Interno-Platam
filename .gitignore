@@ -2,10 +2,15 @@
 config/.env
 .env
 
+# Datos sensibles - NUNCA subir al repo
+# Exportaciones originales (contienen datos de clientes reales)
+export-*.csv
+
 # Datos locales
 data/raw/**/*.csv
 data/hcpn/*.json
 data/processed/**/*.csv
+data/processed/*.csv
 
 # Python
 __pycache__/
