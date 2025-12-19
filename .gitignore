@@ -12,11 +12,6 @@ data/hcpn/*.json
 data/processed/**/*.csv
 data/processed/*.csv
 
-# Gráficos generados (pueden regenerarse)
-charts/*.png
-charts/*.jpg
-charts/*.pdf
-
 # Python
 __pycache__/
 *.py[cod]

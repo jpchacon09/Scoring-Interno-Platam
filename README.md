@@ -181,6 +181,32 @@ python scripts/05_generate_simple_charts.py
 
 ---
 
+## 📊 Vistazo Visual
+
+### Comparación PLATAM vs Experian
+
+![Scatter Plot Comparación](charts/01_scatter_zonas.png)
+*Cada punto = 1 cliente. La mayoría está debajo de la línea negra, indicando que PLATAM es más estricto que Experian. Correlación: 0.263 (baja).*
+
+### Promedios por Rating
+
+![Promedios por Rating](charts/02_promedios_por_rating.png)
+*Clientes con rating D/F según PLATAM tienen score Experian promedio de ~660-750 (Bueno). PLATAM está siendo muy conservador.*
+
+### ¿Quién es más estricto?
+
+![Histograma de Diferencias](charts/03_diferencias_histogram.png)
+*47.2% de clientes tienen PLATAM -150 puntos o menos vs Experian. Promedio: -140.6 puntos.*
+
+### Análisis de Componentes
+
+![Análisis de Componentes](charts/component_analysis.png)
+*Purchase Consistency y Utilization son los componentes más débiles (43.4%). Payment Performance es el más fuerte (70.7%).*
+
+**Ver más:** [GRAFICOS_EXPLICADOS.md](GRAFICOS_EXPLICADOS.md) - 6 gráficos con explicaciones detalladas
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
