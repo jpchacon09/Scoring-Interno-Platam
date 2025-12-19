@@ -1,0 +1,39 @@
+# Credenciales y configuración sensible
+config/.env
+.env
+
+# Datos locales
+data/raw/**/*.csv
+data/hcpn/*.json
+data/processed/**/*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Logs
+logs/*.log
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak
