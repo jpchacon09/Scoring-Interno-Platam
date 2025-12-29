@@ -4,22 +4,41 @@ Calcula PLATAM Internal Credit Score para cada cliente
 
 Este script:
 1. Carga el dataset maestro
-2. Calcula los 5 componentes del PLATAM Score
+2. Calcula los 3 componentes del PLATAM Score
 3. Asigna rating crediticio (A+ a F)
 4. Compara con Experian Score (HCPN)
 5. Genera análisis de correlación y diferencias
+
+Sistema actualizado V2.0 (3 componentes):
+- Payment Performance: 600 pts (60%)
+- Payment Plan History: 150 pts (15%)
+- Deterioration Velocity: 250 pts (25%)
+
+Cambios desde V1.0:
+- Eliminados: Purchase Consistency y Utilization (componentes débiles)
+- Payment Performance: aumentado de 400 a 600 pts
+- Deterioration Velocity: aumentado de 100 a 250 pts
 
 Usage:
     python scripts/03_calculate_platam_score.py
 """
 
+import sys
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 import logging
-import matplotlib.pyplot as plt
-import seaborn as sns
+
+# Add parent dir to path to import internal_credit_score
+sys.path.append(str(Path(__file__).parent.parent))
+from internal_credit_score import (
+    calculate_payment_performance,
+    calculate_payment_plan_score,
+    calculate_deterioration_velocity,
+    get_credit_rating,
+    calculate_credit_score
+)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -34,71 +53,175 @@ COMPARISON_OUTPUT = PROCESSED_DIR / 'score_comparison.csv'
 # Reference date
 REFERENCE_DATE = pd.Timestamp('2025-12-19')
 
-def calculate_payment_performance_score(row):
-    """
-    Componente 1: Payment Performance (400 puntos)
 
-    Basado en:
-    - Puntualidad de pagos (DPD)
-    - Patrón de pagos
-    - Madurez del historial
+def normalize_experian_to_1000(experian_score):
     """
-    if pd.isna(row['has_payment_history']) or not row['has_payment_history']:
-        # Sin historial de pagos - score neutro
-        return 200  # 50% del máximo
+    Normaliza Experian Score (0-924) a escala 0-1000
+    """
+    if pd.isna(experian_score):
+        return np.nan
+
+    # Experian va de 0-924, normalizar a 0-1000
+    return (experian_score / 924) * 1000
+
+
+def calculate_scores_from_master_dataset(df):
+    """
+    Calcula todos los componentes del PLATAM Score usando el dataset maestro
+
+    El dataset maestro ya tiene features agregadas, pero el nuevo sistema
+    requiere data transaccional para cálculos más precisos.
+
+    Esta función adapta los datos del master dataset al formato requerido
+    por las funciones de internal_credit_score.py
+    """
+    logger.info("\n" + "="*80)
+    logger.info("CALCULANDO PLATAM SCORES V2.0")
+    logger.info("Sistema de 3 componentes")
+    logger.info("="*80)
+
+    results = []
+
+    # Preparar datos de pagos si existen
+    # El master dataset tiene features agregadas, pero necesitamos
+    # simular o reconstruir datos transaccionales si es posible
+
+    logger.info("\n⚠️  NOTA IMPORTANTE:")
+    logger.info("Este script usa features agregadas del master dataset.")
+    logger.info("Para cálculos precisos del nuevo sistema, se recomienda usar")
+    logger.info("scripts/calculate_scores.py con datos transaccionales.")
+    logger.info("")
+
+    logger.info(f"Calculando scores para {len(df)} clientes...")
+
+    for idx, row in df.iterrows():
+        if idx % 100 == 0:
+            logger.info(f"  Procesando cliente {idx+1}/{len(df)}...")
+
+        try:
+            client_id = row['cedula']
+
+            # Calcular componentes usando features agregadas
+            # Esto es una aproximación basada en el master dataset
+
+            # 1. Payment Performance (600 pts) - basado en features existentes
+            score_payment_perf = calculate_payment_performance_from_features(row)
+
+            # 2. Payment Plan History (150 pts)
+            score_payment_plan = calculate_payment_plan_from_features(row)
+
+            # 3. Deterioration Velocity (250 pts)
+            score_deterioration = calculate_deterioration_from_features(row)
+
+            # Score total
+            platam_score = score_payment_perf + score_payment_plan + score_deterioration
+
+            # Rating
+            platam_rating = get_credit_rating(platam_score)
+
+            # Normalizar Experian
+            experian_norm = normalize_experian_to_1000(row.get('experian_score'))
+
+            result = {
+                'cedula': client_id,
+                'client_name': row.get('client_name', ''),
+                'calculation_date': REFERENCE_DATE.date(),
+
+                # Component scores (3 componentes)
+                'score_payment_performance': score_payment_perf,
+                'score_payment_plan': score_payment_plan,
+                'score_deterioration': score_deterioration,
+
+                # Total
+                'platam_score': round(platam_score, 1),
+                'platam_rating': platam_rating,
+
+                # Experian comparison
+                'experian_score': row.get('experian_score'),
+                'experian_score_normalized': experian_norm,
+
+                # Key features from master dataset
+                'has_payment_history': row.get('has_payment_history', False),
+                'payment_history_months': row.get('payment_history_months', 0),
+                'payment_id_count': row.get('payment_id_count', 0),
+                'days_past_due_mean': row.get('days_past_due_mean', 0),
+                'days_past_due_max': row.get('days_past_due_max', 0),
+                'pct_early': row.get('pct_early', 0),
+                'pct_late': row.get('pct_late', 0),
+                'days_since_last_payment': row.get('days_since_last_payment'),
+                'cupo_total': row.get('cupo_total', 0),
+                'pct_utilization': row.get('pct_utilization', 0),
+                'status_plan': row.get('status_plan'),
+                'risk_profile': row.get('risk_profile', ''),
+            }
+
+            results.append(result)
+
+        except Exception as e:
+            logger.error(f"Error procesando cliente {row.get('cedula')}: {e}")
+            continue
+
+    return pd.DataFrame(results)
+
+
+def calculate_payment_performance_from_features(row):
+    """
+    Calcula Payment Performance Score (600 pts) usando features agregadas
+
+    Adaptación del componente más importante del nuevo sistema
+    """
+    if pd.isna(row.get('has_payment_history')) or not row['has_payment_history']:
+        return 300  # 50% del máximo si no hay historial
 
     score = 0
 
-    # 1. Puntualidad (200 puntos)
-    # Basado en DPD promedio
+    # 1. Timeliness basado en DPD promedio (300 pts)
     avg_dpd = row.get('days_past_due_mean', 0)
 
     if pd.isna(avg_dpd):
-        timeliness_score = 100
+        timeliness_score = 150
     elif avg_dpd < -15:  # Paga 15+ días antes
-        timeliness_score = 200  # Excelente
+        timeliness_score = 300
     elif avg_dpd < 0:  # Paga antes
-        timeliness_score = 180
+        timeliness_score = 270
     elif avg_dpd == 0:  # Paga a tiempo
-        timeliness_score = 160
+        timeliness_score = 240
     elif avg_dpd <= 5:  # 1-5 días tarde
-        timeliness_score = 120
+        timeliness_score = 180
     elif avg_dpd <= 15:  # 6-15 días tarde
-        timeliness_score = 80
+        timeliness_score = 120
     elif avg_dpd <= 30:  # 16-30 días tarde
-        timeliness_score = 40
+        timeliness_score = 60
     else:  # 30+ días tarde
         timeliness_score = 0
 
     score += timeliness_score
 
-    # 2. Patrón de pagos (100 puntos)
-    # Basado en % de pagos a tiempo/tempranos vs tardíos
+    # 2. Pattern basado en % de pagos tempranos/tardíos (200 pts)
     pct_early = row.get('pct_early', 0)
     pct_late = row.get('pct_late', 0)
 
     if pd.notna(pct_early) and pd.notna(pct_late):
         if pct_early >= 80:  # 80%+ pagos tempranos
-            pattern_score = 100
+            pattern_score = 200
         elif pct_early >= 60:
-            pattern_score = 80
+            pattern_score = 160
         elif pct_late <= 10:  # Bajo % de pagos tardíos
-            pattern_score = 70
+            pattern_score = 140
         elif pct_late <= 30:
-            pattern_score = 50
+            pattern_score = 100
         else:
-            pattern_score = 20
+            pattern_score = 40
     else:
-        pattern_score = 50
+        pattern_score = 100
 
     score += pattern_score
 
-    # 3. Madurez del historial (100 puntos)
-    # Más meses de historial = más confiable
+    # 3. Maturity del historial (100 pts)
     history_months = row.get('payment_history_months', 0)
 
     if pd.isna(history_months):
-        maturity_score = 20
+        maturity_score = 30
     elif history_months >= 12:  # 1+ año
         maturity_score = 100
     elif history_months >= 6:  # 6+ meses
@@ -110,98 +233,13 @@ def calculate_payment_performance_score(row):
 
     score += maturity_score
 
-    return min(score, 400)  # Cap en 400
+    return min(score, 600)  # Cap en 600
 
-def calculate_purchase_consistency_score(row):
+
+def calculate_payment_plan_from_features(row):
     """
-    Componente 2: Purchase Consistency (200 puntos)
-
-    Basado en:
-    - Frecuencia de pagos (proxy para compras)
-    - Recency (actividad reciente)
+    Calcula Payment Plan History Score (150 pts) usando features agregadas
     """
-    if pd.isna(row['has_payment_history']) or not row['has_payment_history']:
-        return 0  # Sin historial
-
-    score = 0
-
-    # 1. Frecuencia (100 puntos)
-    total_payments = row.get('payment_id_count', 0)
-    history_months = max(row.get('payment_history_months', 1), 1)
-
-    payments_per_month = total_payments / history_months if history_months > 0 else 0
-
-    if payments_per_month >= 2:  # 2+ pagos/mes
-        frequency_score = 100
-    elif payments_per_month >= 1:  # 1+ pago/mes
-        frequency_score = 80
-    elif payments_per_month >= 0.5:  # 1 pago cada 2 meses
-        frequency_score = 50
-    else:
-        frequency_score = 20
-
-    score += frequency_score
-
-    # 2. Recency (100 puntos)
-    days_since_last = row.get('days_since_last_payment', 999)
-
-    if pd.isna(days_since_last):
-        recency_score = 0
-    elif days_since_last <= 30:  # Último pago hace 30 días o menos
-        recency_score = 100
-    elif days_since_last <= 60:
-        recency_score = 70
-    elif days_since_last <= 90:
-        recency_score = 40
-    else:  # 90+ días sin pagar
-        recency_score = 10
-
-    score += recency_score
-
-    return min(score, 200)
-
-def calculate_utilization_score(row):
-    """
-    Componente 3: Utilization Score (150 puntos)
-
-    Basado en:
-    - % de utilización del cupo
-    - Penaliza volatilidad extrema
-    """
-    pct_util = row.get('pct_utilization', 0)
-
-    if pd.isna(pct_util):
-        return 75  # Score neutro
-
-    # Curva óptima: penalizar muy bajo y muy alto
-    if pct_util <= 10:  # Muy baja utilización
-        score = 50
-    elif pct_util <= 30:  # Óptimo bajo
-        score = 120
-    elif pct_util <= 50:  # Óptimo
-        score = 150
-    elif pct_util <= 70:  # Moderado
-        score = 130
-    elif pct_util <= 85:  # Alto
-        score = 90
-    elif pct_util <= 95:  # Muy alto
-        score = 50
-    else:  # Maxed out
-        score = 20
-
-    return min(score, 150)
-
-def calculate_payment_plan_score(row):
-    """
-    Componente 4: Payment Plan History (150 puntos)
-
-    Basado en:
-    - Si tiene plan de pago activo (penaliza)
-    - Historial de planes de pago
-    """
-    # Por ahora no tenemos info detallada de payment plans
-    # Usar risk_profile y status_plan como proxy
-
     status_plan = row.get('status_plan')
     risk_profile = row.get('risk_profile', '')
 
@@ -224,138 +262,40 @@ def calculate_payment_plan_score(row):
     else:
         return 100
 
-def calculate_deterioration_velocity(row):
-    """
-    Componente 5: Deterioration Velocity (100 puntos)
 
-    Basado en:
-    - Comparación de DPD reciente vs histórico
-    - Tendencia de deterioro
+def calculate_deterioration_from_features(row):
     """
-    if pd.isna(row['has_payment_history']) or not row['has_payment_history']:
-        return 50  # Neutro
+    Calcula Deterioration Velocity Score (250 pts) usando features agregadas
 
-    # Usar max DPD como proxy para peor momento
+    Basado en comparación de DPD máximo vs promedio como proxy
+    """
+    if pd.isna(row.get('has_payment_history')) or not row['has_payment_history']:
+        return 125  # 50% neutro
+
     max_dpd = row.get('days_past_due_max', 0)
     avg_dpd = row.get('days_past_due_mean', 0)
 
     if pd.isna(max_dpd) or pd.isna(avg_dpd):
-        return 50
+        return 125
 
     # Si nunca ha tenido mora severa
     if max_dpd <= 5:
-        return 100  # Excelente
+        return 250  # Excelente
 
     # Velocidad de deterioro = qué tan lejos llegó del promedio
     velocity = max_dpd - avg_dpd
 
     if velocity <= 10:  # Estable
-        score = 100
+        score = 250
     elif velocity <= 30:  # Deterioro leve
-        score = 70
+        score = 175
     elif velocity <= 60:  # Deterioro moderado
-        score = 40
+        score = 100
     else:  # Deterioro severo
-        score = 10
+        score = 25
 
-    return min(score, 100)
+    return min(score, 250)
 
-def get_credit_rating(total_score):
-    """
-    Asigna rating crediticio basado en score total
-
-    Escala:
-    900-1000: A+
-    850-899:  A
-    800-849:  A-
-    750-799:  B+
-    700-749:  B
-    650-699:  B-
-    600-649:  C+
-    550-599:  C
-    500-549:  C-
-    450-499:  D+
-    400-449:  D
-    0-399:    F
-    """
-    if total_score >= 900:
-        return 'A+'
-    elif total_score >= 850:
-        return 'A'
-    elif total_score >= 800:
-        return 'A-'
-    elif total_score >= 750:
-        return 'B+'
-    elif total_score >= 700:
-        return 'B'
-    elif total_score >= 650:
-        return 'B-'
-    elif total_score >= 600:
-        return 'C+'
-    elif total_score >= 550:
-        return 'C'
-    elif total_score >= 500:
-        return 'C-'
-    elif total_score >= 450:
-        return 'D+'
-    elif total_score >= 400:
-        return 'D'
-    else:
-        return 'F'
-
-def normalize_experian_to_1000(experian_score):
-    """
-    Normaliza Experian Score (0-924) a escala 0-1000
-    """
-    if pd.isna(experian_score):
-        return np.nan
-
-    # Experian va de 0-924, normalizar a 0-1000
-    return (experian_score / 924) * 1000
-
-def calculate_scores(df):
-    """
-    Calcula todos los componentes del PLATAM Score
-    """
-    logger.info("\n" + "="*80)
-    logger.info("CALCULANDO PLATAM SCORES")
-    logger.info("="*80)
-
-    # Calcular cada componente
-    logger.info("\n1. Calculando Payment Performance (400 pts)...")
-    df['score_payment_performance'] = df.apply(calculate_payment_performance_score, axis=1)
-
-    logger.info("2. Calculando Purchase Consistency (200 pts)...")
-    df['score_purchase_consistency'] = df.apply(calculate_purchase_consistency_score, axis=1)
-
-    logger.info("3. Calculando Utilization (150 pts)...")
-    df['score_utilization'] = df.apply(calculate_utilization_score, axis=1)
-
-    logger.info("4. Calculando Payment Plan History (150 pts)...")
-    df['score_payment_plan'] = df.apply(calculate_payment_plan_score, axis=1)
-
-    logger.info("5. Calculando Deterioration Velocity (100 pts)...")
-    df['score_deterioration'] = df.apply(calculate_deterioration_velocity, axis=1)
-
-    # Score total
-    logger.info("\n6. Calculando score total...")
-    df['platam_score'] = (
-        df['score_payment_performance'] +
-        df['score_purchase_consistency'] +
-        df['score_utilization'] +
-        df['score_payment_plan'] +
-        df['score_deterioration']
-    )
-
-    # Rating
-    logger.info("7. Asignando credit rating...")
-    df['platam_rating'] = df['platam_score'].apply(get_credit_rating)
-
-    # Normalizar Experian para comparación
-    logger.info("8. Normalizando Experian Score a escala 0-1000...")
-    df['experian_score_normalized'] = df['experian_score'].apply(normalize_experian_to_1000)
-
-    return df
 
 def analyze_scores(df):
     """
@@ -366,7 +306,7 @@ def analyze_scores(df):
     logger.info("="*80)
 
     # Estadísticas PLATAM Score
-    logger.info("\n--- PLATAM SCORE ---")
+    logger.info("\n--- PLATAM SCORE V2.0 ---")
     logger.info(f"Promedio: {df['platam_score'].mean():.1f}")
     logger.info(f"Mediana: {df['platam_score'].median():.1f}")
     logger.info(f"Mínimo: {df['platam_score'].min():.1f}")
@@ -375,20 +315,22 @@ def analyze_scores(df):
 
     # Distribución por rating
     logger.info("\n--- DISTRIBUCIÓN POR RATING ---")
-    rating_dist = df['platam_rating'].value_counts().sort_index()
-    for rating, count in rating_dist.items():
-        pct = count / len(df) * 100
-        logger.info(f"{rating}: {count:4} ({pct:5.1f}%)")
+    rating_order = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D/F']
+    rating_counts = df['platam_rating'].value_counts()
+    for rating in rating_order:
+        if rating in rating_counts.index:
+            count = rating_counts[rating]
+            pct = count / len(df) * 100
+            logger.info(f"{rating}: {count:4} ({pct:5.1f}%)")
 
-    # Promedios por componente
-    logger.info("\n--- PROMEDIO POR COMPONENTE ---")
-    logger.info(f"Payment Performance:   {df['score_payment_performance'].mean():6.1f} / 400 ({df['score_payment_performance'].mean()/400*100:.1f}%)")
-    logger.info(f"Purchase Consistency:  {df['score_purchase_consistency'].mean():6.1f} / 200 ({df['score_purchase_consistency'].mean()/200*100:.1f}%)")
-    logger.info(f"Utilization:           {df['score_utilization'].mean():6.1f} / 150 ({df['score_utilization'].mean()/150*100:.1f}%)")
-    logger.info(f"Payment Plan:          {df['score_payment_plan'].mean():6.1f} / 150 ({df['score_payment_plan'].mean()/150*100:.1f}%)")
-    logger.info(f"Deterioration:         {df['score_deterioration'].mean():6.1f} / 100 ({df['score_deterioration'].mean()/100*100:.1f}%)")
+    # Promedios por componente (3 componentes)
+    logger.info("\n--- PROMEDIO POR COMPONENTE (Sistema V2.0) ---")
+    logger.info(f"Payment Performance:    {df['score_payment_performance'].mean():6.1f} / 600 ({df['score_payment_performance'].mean()/600*100:.1f}%)")
+    logger.info(f"Payment Plan History:   {df['score_payment_plan'].mean():6.1f} / 150 ({df['score_payment_plan'].mean()/150*100:.1f}%)")
+    logger.info(f"Deterioration Velocity: {df['score_deterioration'].mean():6.1f} / 250 ({df['score_deterioration'].mean()/250*100:.1f}%)")
 
     return df
+
 
 def compare_with_experian(df):
     """
@@ -408,7 +350,7 @@ def compare_with_experian(df):
 
     # Estadísticas comparativas
     logger.info("\n--- ESTADÍSTICAS COMPARATIVAS ---")
-    logger.info(f"{'Métrica':<30} {'PLATAM':<15} {'Experian (norm)':<15}")
+    logger.info(f"{'Métrica':<30} {'PLATAM V2.0':<15} {'Experian (norm)':<15}")
     logger.info("-" * 60)
     logger.info(f"{'Promedio':<30} {comparison['platam_score'].mean():>14.1f} {comparison['experian_score_normalized'].mean():>14.1f}")
     logger.info(f"{'Mediana':<30} {comparison['platam_score'].median():>14.1f} {comparison['experian_score_normalized'].median():>14.1f}")
@@ -458,10 +400,12 @@ def compare_with_experian(df):
 
     return df
 
+
 def main():
     """Función principal"""
     logger.info("="*80)
-    logger.info("PLATAM INTERNAL CREDIT SCORE CALCULATOR")
+    logger.info("PLATAM INTERNAL CREDIT SCORE CALCULATOR V2.0")
+    logger.info("Sistema de 3 componentes")
     logger.info("="*80)
 
     # Cargar dataset maestro
@@ -470,7 +414,7 @@ def main():
     logger.info(f"✓ Cargados {len(df):,} clientes")
 
     # Calcular scores
-    df = calculate_scores(df)
+    df = calculate_scores_from_master_dataset(df)
 
     # Analizar scores
     df = analyze_scores(df)
@@ -500,13 +444,20 @@ def main():
     logger.info(summary.to_string())
 
     logger.info("\n" + "="*80)
-    logger.info("✓ CÁLCULO DE SCORES COMPLETADO")
+    logger.info("✅ CÁLCULO DE SCORES COMPLETADO")
     logger.info("="*80)
     logger.info(f"\nArchivos generados:")
     logger.info(f"  - {SCORES_OUTPUT}")
     logger.info(f"  - {COMPARISON_OUTPUT}")
 
+    logger.info("\n💡 Cambios del sistema V2.0:")
+    logger.info("  ✅ Eliminados: Purchase Consistency y Utilization")
+    logger.info("  ✅ Payment Performance: 400 → 600 pts (+50%)")
+    logger.info("  ✅ Deterioration Velocity: 100 → 250 pts (+150%)")
+    logger.info("  ✅ Payment Plan History: 150 pts (sin cambios)")
+
     return df
+
 
 if __name__ == '__main__':
     main()
