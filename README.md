@@ -31,7 +31,8 @@ Sistema de scoring crediticio interno para PLATAM BNPL (Buy Now Pay Later) con m
 | 3. Scoring PLATAM V2.0 | ✅ Completado | 100% |
 | 4. Comparación con Experian | ✅ Completado | 100% |
 | 5. Visualizaciones V2.0 | ✅ Completado | 100% |
-| 6. Migración a ML (Vertex AI) | 📋 Planeado | 0% |
+| 6. Scoring Híbrido Inteligente | ✅ Completado | 100% |
+| 7. Migración a ML (Vertex AI) | 📋 Planeado | 0% |
 
 ---
 
@@ -51,6 +52,12 @@ python scripts/05_generate_simple_charts.py
 
 # 4. Exportar a Excel
 python scripts/06_create_scores_excel.py
+
+# 5. Calcular scores híbridos (PLATAM + HCPN)
+python scripts/08_calculate_hybrid_scores.py
+
+# 6. Visualizaciones comparativas híbrido
+python scripts/09_visualize_hybrid_comparison.py
 ```
 
 ---
@@ -119,6 +126,64 @@ python scripts/06_create_scores_excel.py
 - **+15-20%** de clientes correctamente clasificados como bajo riesgo
 - **Sistema más justo** sin penalizar comportamiento prudente
 - **Mayor correlación** con riesgo real de default
+
+---
+
+## 🔄 Sistema de Scoring Híbrido Inteligente
+
+### ¿Qué es el Scoring Híbrido?
+
+El **PLATAM Hybrid Scoring System** combina inteligentemente dos fuentes de información crediticia:
+
+1. **PLATAM Score V2.0** (comportamiento interno)
+2. **HCPN Score** (Experian, historial externo)
+
+### ¿Por Qué NO 50/50?
+
+**NO usamos una combinación fija (50% + 50%).**
+
+En lugar de eso, calculamos **pesos dinámicos** basados en:
+- ✅ **Madurez del cliente** (meses en la plataforma)
+- ✅ **Cantidad de historial** (número de pagos)
+- ✅ **Disponibilidad de datos** (PLATAM, HCPN, ambos, o ninguno)
+
+### Reglas de Ponderación
+
+| Categoría | Tiempo | Peso PLATAM | Peso HCPN |
+|-----------|--------|-------------|-----------|
+| **Muy Nuevo** | < 3 meses | 30% | 70% |
+| **Nuevo** | 3-6 meses | 40% | 60% |
+| **Intermedio** | 6-12 meses | 50% | 50% |
+| **Establecido** | 12-24 meses | 60% | 40% |
+| **Maduro** | > 24 meses | 70% | 30% |
+
+**Ajustes adicionales:**
+- ✅ **+10% peso PLATAM** si tiene ≥20 pagos (historial amplio)
+- ⚠️ **-10% peso PLATAM** si tiene <5 pagos (historial insuficiente)
+
+### Casos Especiales
+
+1. **Solo PLATAM (sin HCPN):** 100% PLATAM
+2. **Solo HCPN (cliente nuevo):** 80% HCPN + 20% base conservador
+3. **Sin datos (thin file):** Score por defecto 500
+
+### Resultados
+
+| Métrica | PLATAM V2.0 | HCPN | **Híbrido** |
+|---------|-------------|------|-------------|
+| Promedio | 724.7 | 762.1 | **746.9** ✅ |
+| Desv. Std | 202.5 | 154.7 | **159.4** ✅ |
+| Rating A | 48.6% | 43.8% | **45.4%** |
+
+**Ventajas:**
+- ✅ **34.1%** de clientes mejoraron su score
+- ✅ Más **estable** que V2.0 puro (menor desviación)
+- ✅ **Justo** para clientes nuevos y establecidos
+- ✅ **Flexible** según disponibilidad de datos
+
+### Documentación
+
+Ver guía completa: [`HYBRID_SCORING_GUIDE.md`](HYBRID_SCORING_GUIDE.md)
 
 ---
 
