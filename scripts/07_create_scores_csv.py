@@ -109,11 +109,10 @@ def create_scores_csv():
     csv_data['rating_score_calculado'] = csv_data['score_calculado_hcpn'].apply(get_credit_rating)
 
     # 9. Componentes del score PLATAM
-    csv_data['componente_payment_performance'] = df['score_payment_performance'].round(0)
-    csv_data['componente_purchase_consistency'] = df['score_purchase_consistency'].round(0)
-    csv_data['componente_utilization'] = df['score_utilization'].round(0)
-    csv_data['componente_payment_plan'] = df['score_payment_plan'].round(0)
-    csv_data['componente_deterioration'] = df['score_deterioration'].round(0)
+    # Componentes del score PLATAM V2.0 (3 componentes)
+    csv_data['componente_payment_performance_600pts'] = df['score_payment_performance'].round(0)
+    csv_data['componente_payment_plan_history_150pts'] = df['score_payment_plan'].round(0)
+    csv_data['componente_deterioration_velocity_250pts'] = df['score_deterioration'].round(0)
 
     # 10. Información financiera
     csv_data['cupo_total'] = df['cupo_total']

@@ -156,15 +156,14 @@ def create_rating_distribution():
     plt.close()
 
 def create_component_analysis():
-    """Análisis de componentes del score"""
+    """Análisis de componentes del score V2.0 (3 componentes)"""
     df = pd.read_csv(PROCESSED_DIR / 'platam_scores.csv')
 
+    # Sistema V2.0: 3 componentes
     components = {
-        'Payment\nPerformance': ('score_payment_performance', 400),
-        'Purchase\nConsistency': ('score_purchase_consistency', 200),
-        'Utilization': ('score_utilization', 150),
-        'Payment\nPlan': ('score_payment_plan', 150),
-        'Deterioration': ('score_deterioration', 100)
+        'Payment\nPerformance': ('score_payment_performance', 600),
+        'Payment Plan\nHistory': ('score_payment_plan', 150),
+        'Deterioration\nVelocity': ('score_deterioration', 250)
     }
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
@@ -184,7 +183,7 @@ def create_component_analysis():
                     ha='center', va='bottom', fontsize=9, fontweight='bold')
 
     axes[0].set_ylabel('Puntos', fontsize=12)
-    axes[0].set_title('Promedio por Componente (valores absolutos)', fontsize=12, fontweight='bold')
+    axes[0].set_title('Sistema V2.0: Promedio por Componente (3 componentes)', fontsize=12, fontweight='bold')
     axes[0].legend()
     axes[0].grid(True, axis='y', alpha=0.3)
 
@@ -203,14 +202,14 @@ def create_component_analysis():
                     ha='center', va='bottom', fontsize=10, fontweight='bold')
 
     axes[1].set_ylabel('% del Máximo', fontsize=12)
-    axes[1].set_title('Desempeño por Componente (% del máximo)', fontsize=12, fontweight='bold')
+    axes[1].set_title('Sistema V2.0: Desempeño por Componente', fontsize=12, fontweight='bold')
     axes[1].set_ylim(0, 100)
     axes[1].legend()
     axes[1].grid(True, axis='y', alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(CHARTS_DIR / 'component_analysis.png', dpi=300, bbox_inches='tight')
-    logger.info(f"✓ Guardado: {CHARTS_DIR}/component_analysis.png")
+    plt.savefig(CHARTS_DIR / 'component_analysis_v2.png', dpi=300, bbox_inches='tight')
+    logger.info(f"✓ Guardado: {CHARTS_DIR}/component_analysis_v2.png")
     plt.close()
 
 def main():

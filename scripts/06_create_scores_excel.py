@@ -108,12 +108,10 @@ def create_scores_excel():
     # 8. Rating del score híbrido
     excel_data['Rating_Hibrido'] = excel_data['Score_Hibrido_50_50'].apply(get_credit_rating)
 
-    # 9. Componentes del score PLATAM
-    excel_data['Payment_Performance'] = df['score_payment_performance'].round(0)
-    excel_data['Purchase_Consistency'] = df['score_purchase_consistency'].round(0)
-    excel_data['Utilization'] = df['score_utilization'].round(0)
-    excel_data['Payment_Plan'] = df['score_payment_plan'].round(0)
-    excel_data['Deterioration'] = df['score_deterioration'].round(0)
+    # 9. Componentes del score PLATAM V2.0 (3 componentes)
+    excel_data['Payment_Performance_600pts'] = df['score_payment_performance'].round(0)
+    excel_data['Payment_Plan_History_150pts'] = df['score_payment_plan'].round(0)
+    excel_data['Deterioration_Velocity_250pts'] = df['score_deterioration'].round(0)
 
     # 10. Información financiera
     excel_data['Cupo_Total'] = df['cupo_total']
