@@ -50,15 +50,21 @@ def calculate_hybrid_scores():
     df = pd.read_csv(SCORES_FILE)
     logger.info(f"   ✓ Cargados {len(df):,} clientes")
 
-    # Calcular meses como cliente (basado en fecha de creación)
-    if 'created_at' in df.columns:
+    # Calcular meses como cliente
+    # Usar payment_history_months si existe (es el valor correcto del master dataset)
+    if 'payment_history_months' in df.columns:
+        logger.info("   ✓ Usando 'payment_history_months' del master dataset")
+        df['months_as_client'] = df['payment_history_months'].fillna(0).round().astype(int)
+    elif 'created_at' in df.columns:
+        logger.info("   ✓ Calculando meses desde 'created_at'")
         df['created_at'] = pd.to_datetime(df['created_at'], errors='coerce')
         reference_date = pd.Timestamp.now()
         df['months_as_client'] = ((reference_date - df['created_at']).dt.days / 30.44).fillna(0).astype(int)
     else:
-        # Usar días desde último pago como proxy si no hay created_at
-        logger.warning("   ⚠️  Columna 'created_at' no encontrada, usando proxy")
-        df['months_as_client'] = (df['days_since_last_payment'].fillna(0) / 30.44).astype(int)
+        # FALLBACK: Usar payment_id_count como proxy (número de pagos ≈ meses)
+        logger.warning("   ⚠️  No hay 'payment_history_months' ni 'created_at'")
+        logger.warning("   ⚠️  Usando payment_id_count/4 como proxy conservador")
+        df['months_as_client'] = (df.get('payment_id_count', 0).fillna(0) / 4).astype(int)
 
     # Asegurar que payment_count existe
     if 'payment_id_count' in df.columns:

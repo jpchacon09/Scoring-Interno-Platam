@@ -221,10 +221,15 @@ if HYBRID_FILE.exists():
     hybrid_df['cedula'] = hybrid_df['cedula'].astype(int)
 
     # Actualizar componentes y scores desde scores_df recalculados
-    hybrid_df = hybrid_df.drop([
+    # Eliminar columnas que vamos a reemplazar, incluyendo duplicados con sufijos _x y _y
+    cols_to_drop = [
         'platam_score', 'platam_rating',
-        'score_payment_performance', 'score_payment_plan', 'score_deterioration'
-    ], axis=1, errors='ignore')
+        'score_payment_performance', 'score_payment_plan', 'score_deterioration',
+        'tiene_plan_activo', 'tiene_plan_default', 'tiene_plan_pendiente', 'num_planes',
+        'tiene_plan_activo_x', 'tiene_plan_default_x', 'tiene_plan_pendiente_x', 'num_planes_x',
+        'tiene_plan_activo_y', 'tiene_plan_default_y', 'tiene_plan_pendiente_y', 'num_planes_y'
+    ]
+    hybrid_df = hybrid_df.drop([col for col in cols_to_drop if col in hybrid_df.columns], axis=1)
 
     hybrid_df = hybrid_df.merge(
         scores_df[[
