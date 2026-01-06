@@ -8,7 +8,7 @@
 1006218030,,575,775.974025974026,735.7792207792209,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1114458785,,575,788.961038961039,746.1688311688313,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 31842592,,575,860.3896103896104,803.3116883116884,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901973300,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901973300,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 66661722,,575,861.4718614718615,804.1774891774893,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1030562981,,575,551.948051948052,556.5584415584417,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 31918579,,575,806.2770562770562,760.021645021645,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -63,7 +63,7 @@
 46375727,,575,439.3939393939394,466.5151515151515,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 78747121,,575,823.5930735930735,773.8744588744589,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1001481017,,575,798.7012987012987,753.961038961039,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-811038648,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+811038648,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 74185826,,575,874.4588744588744,814.5670995670996,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1110459403,,575,840.909090909091,787.7272727272729,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 6876777,,575,820.3463203463203,771.2770562770563,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -75,14 +75,14 @@
 1117498135,,575,785.7142857142857,743.5714285714286,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1090367822,,575,699.1341991341992,674.3073593073594,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 35502422,,575,814.9350649350649,766.948051948052,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901553361,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-900987092,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901553361,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
+900987092,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1005626334,,575,790.04329004329,747.0346320346321,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 52995417,,575,902.5974025974026,837.0779220779222,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1074811615,,575,0.0,115.0,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1098651098,,575,843.0735930735931,789.4588744588746,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901925760,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-900557498,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901925760,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
+900557498,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 49717943,,575,692.6406926406926,669.1125541125541,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1081847344,,575,729.4372294372295,698.5497835497836,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 40447312,,575,895.0216450216451,831.0173160173161,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -98,7 +98,7 @@
 63357425,,575,911.2554112554112,844.0043290043291,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 80262722,,930,496.7532467532468,583.4025974025974,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-19.0,-19.0,100.0,0.0,False,False,False,0
 44152359,,575,885.2813852813854,823.2251082251083,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901404416,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901404416,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1110547393,,575,835.4978354978355,783.3982683982684,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 11322032,,575,847.4025974025974,792.922077922078,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 21203220,,575,844.1558441558441,790.3246753246754,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -116,10 +116,10 @@
 43260868,,575,848.4848484848485,793.7878787878789,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 12549466,,575,666.6666666666666,648.3333333333334,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1128058814,,575,806.2770562770562,760.021645021645,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901377092,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901377092,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 70696517,,575,817.0995670995671,768.6796536796537,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901048121,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-901804230,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901048121,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
+901804230,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1013691322,,575,846.3203463203464,792.0562770562772,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 35488917,,575,896.1038961038961,831.8831168831169,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 40334824,,575,839.8268398268398,786.8614718614718,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -143,12 +143,12 @@
 66862473,,575,558.4415584415584,561.7532467532467,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1120561800,,575,824.6753246753246,774.7402597402597,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 25706928,,575,811.6883116883117,764.3506493506494,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-805003019,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+805003019,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 78739607,,575,720.7792207792207,691.6233766233767,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 18959245,,575,878.7878787878788,818.030303030303,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1003762634,,575,808.4415584415584,761.7532467532468,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 78038446,,575,846.3203463203464,792.0562770562772,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901184611,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901184611,,575,250.0,315.0,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1067962031,,575,686.1471861471862,663.917748917749,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1007667707,,575,774.8917748917748,734.91341991342,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1110461517,,575,535.7142857142857,543.5714285714286,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -156,7 +156,7 @@
 55176903,,575,899.3506493506493,834.4805194805194,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 40397432,,575,893.9393939393939,830.1515151515151,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1127670319,,575,702.3809523809523,676.9047619047618,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901812431,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901812431,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 9153994,,575,468.6147186147186,489.8917748917749,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 9692817,,575,846.3203463203464,792.0562770562772,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 14136412,,575,887.4458874458875,824.95670995671,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -168,8 +168,8 @@
 1016029792,,575,740.2597402597403,707.2077922077923,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1022335020,,575,399.35064935064935,434.4805194805195,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 26899887,,575,807.3593073593074,760.887445887446,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901476220,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-901460130,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901476220,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
+901460130,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1122140105,,575,602.8138528138528,597.2510822510823,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1099874596,,575,856.0606060606061,799.848484848485,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1022944087,,900,845.2380952380952,856.1904761904761,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
@@ -180,7 +180,7 @@
 1004826919,,930,589.8268398268398,657.8614718614718,A+,B,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-25.0,-25.0,100.0,0.0,False,False,False,0
 79895731,,575,727.2727272727273,696.8181818181819,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1107037234,,575,474.025974025974,494.2207792207792,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900530150,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900530150,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1113513146,,575,680.7359307359308,659.5887445887446,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 63336308,,575,923.1601731601731,853.5281385281386,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1090464386,,930,865.8008658008658,878.6406926406927,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-26.5,-23.0,100.0,0.0,False,False,False,0
@@ -197,7 +197,7 @@
 13277258,,575,861.4718614718615,804.1774891774893,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 53063678,,575,913.4199134199134,845.7359307359308,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 39769248,,575,702.3809523809523,676.9047619047618,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900673058,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900673058,,575,0.0,115.0,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 80052476,,900,845.2380952380952,856.1904761904761,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-11.0,-11.0,100.0,0.0,False,False,False,0
 21183151,,930,892.8571428571429,900.2857142857143,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-18.5,-18.0,100.0,0.0,False,False,False,0
 1122338697,,930,760.8225108225108,794.6580086580087,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,-16.333333333333332,-9.0,100.0,0.0,False,False,False,0
@@ -214,7 +214,7 @@
 901380324,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
 79635941,,900,915.5844155844156,912.4675324675326,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-4.0,-4.0,100.0,0.0,False,False,False,0
 93236324,,930,717.5324675324675,760.025974025974,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-19.5,-17.0,100.0,0.0,False,False,False,0
-901525157,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901525157,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 40412258,,900,948.051948051948,938.4415584415584,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-3.0,-3.0,100.0,0.0,False,False,False,0
 86052008,,650,772.7272727272727,748.1818181818182,B,B+,250,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,2.5,5.0,0.0,50.0,False,False,False,0
 1080183341,,930,794.3722943722944,821.4978354978356,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-50.0,-47.0,100.0,0.0,False,False,False,0
@@ -223,7 +223,7 @@
 1234191457,,900,845.2380952380952,856.1904761904761,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
 1107084599,,900,866.8831168831169,873.5064935064936,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
 79984636,,930,491.3419913419913,579.073593073593,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-37.0,-37.0,100.0,0.0,False,False,False,0
-900934461,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900934461,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1096184997,,900,283.5497835497836,406.8398268398269,A+,C,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-6.0,-6.0,100.0,0.0,False,False,False,0
 1054546960,,900,847.4025974025974,857.922077922078,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-9.0,-9.0,100.0,0.0,False,False,False,0
 1106949871,,575,799.7835497835498,754.8268398268399,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -234,7 +234,7 @@
 65775747,,900,897.1861471861472,897.7489177489178,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-6.0,-6.0,100.0,0.0,False,False,False,0
 1107102765,,575,708.8744588744589,682.0995670995671,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 24652032,,930,865.8008658008658,878.6406926406927,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-36.0,-31.0,100.0,0.0,False,False,False,0
-901770469,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901770469,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 39584439,,900,858.2251082251082,866.5800865800866,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-9.0,-5.0,100.0,0.0,False,False,False,0
 42110190,,900,944.8051948051948,935.8441558441559,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-6.0,-6.0,100.0,0.0,False,False,False,0
 52858918,,900,854.9783549783549,863.982683982684,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-11.0,-11.0,100.0,0.0,False,False,False,0
@@ -243,7 +243,7 @@
 39678033,,575,543.2900432900433,549.6320346320347,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 80164925,,930,795.4545454545454,822.3636363636364,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,1,-29.25,-18.0,100.0,0.0,False,False,False,0
 1020497090,,575,767.3160173160173,728.8528138528139,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901825227,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,5,0,-25.0,-20.0,100.0,0.0,False,False,False,0
+901825227,,930,1000.0,979.0,A+,A+,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",5,0,-25.0,-20.0,100.0,0.0,False,False,False,0
 36289188,,575,869.047619047619,810.2380952380953,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 18973740,,590,755.4112554112554,722.3290043290043,C+,B+,190,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,6.0,6.0,0.0,100.0,False,False,False,0
 901931565,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-7.0,-7.0,100.0,0.0,False,False,False,0
@@ -279,14 +279,14 @@
 1118563355,,930,800.8658008658008,826.6926406926407,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-33.0,-33.0,100.0,0.0,False,False,False,0
 68248150,,930,808.4415584415584,832.7532467532468,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-21.0,-21.0,100.0,0.0,False,False,False,0
 92096910,,575,901.5151515151516,836.2121212121214,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901570652,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-21.0,-21.0,100.0,0.0,False,False,False,0
-901340678,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,1,-20.0,-4.0,100.0,0.0,False,False,True,3
+901570652,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-21.0,-21.0,100.0,0.0,False,False,False,0
+901340678,,930,1000.0,986.0,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-20.0,-4.0,100.0,0.0,False,False,True,3
 23791722,,575,846.3203463203464,792.0562770562772,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 24049095,,900,875.5411255411256,880.4329004329005,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-10.0,-10.0,100.0,0.0,False,False,False,0
 51884049,,900,896.1038961038961,896.8831168831169,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-1.0,-1.0,100.0,0.0,False,False,False,0
 1119887920,,930,844.1558441558441,861.3246753246754,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-22.0,-22.0,100.0,0.0,False,False,False,0
 39951317,,930,814.9350649350649,837.948051948052,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-19.0,-19.0,100.0,0.0,False,False,False,0
-901427853,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901427853,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 39654567,,930,880.952380952381,890.7619047619048,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,-21.33333333333333,-10.0,100.0,0.0,False,False,False,0
 26314633,,900,774.8917748917748,799.91341991342,A+,B+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-11.0,-11.0,100.0,0.0,False,False,False,0
 52880488,,900,849.5670995670995,859.6536796536797,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-8.0,-8.0,100.0,0.0,False,False,False,0
@@ -304,10 +304,10 @@
 1082129638,,930,759.7402597402597,793.7922077922078,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-18.0,-18.0,100.0,0.0,False,False,False,0
 52535313,,575,873.3766233766233,813.7012987012987,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1119889348,,575,819.2640692640692,770.4112554112554,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900525196,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900525196,,575,250.0,315.0,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1121938219,,575,721.8614718614718,692.4891774891775,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1014238600,,900,712.1212121212121,749.6969696969697,A+,B+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,1,-14.25,-3.0,100.0,0.0,False,False,False,0
-901556259,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901556259,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 40384981,,900,879.8701298701299,883.8961038961039,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-5.0,-5.0,100.0,0.0,False,False,False,0
 36183145,,930,886.3636363636364,895.0909090909091,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-32.0,-32.0,100.0,0.0,False,False,False,0
 1108120580,,575,863.6363636363636,805.909090909091,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -342,14 +342,14 @@
 1144197680,,900,820.3463203463203,836.2770562770563,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-15.0,-15.0,100.0,0.0,False,False,False,0
 11814099,,575,870.1298701298701,811.1038961038962,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1098617940,,930,445.8874458874459,542.7099567099567,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-20.33333333333333,-12.0,100.0,0.0,False,False,False,0
-901423960,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,0,-10.666666666666666,-7.0,100.0,0.0,False,False,False,0
+901423960,,900,750.0,780.0,A+,B+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,-10.666666666666666,-7.0,100.0,0.0,False,False,False,0
 19601976,,900,857.1428571428571,865.7142857142858,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,-8.666666666666666,-6.0,100.0,0.0,False,False,False,0
 1047461282,,575,1.0822510822510822,115.86580086580086,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 19182183,,930,682.9004329004329,732.3203463203463,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-17.5,-11.0,100.0,0.0,False,False,False,0
-901463952,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901463952,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1057578675,,900,825.7575757575758,840.6060606060606,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-8.5,-7.0,100.0,0.0,False,False,False,0
 1102857619,,575,742.4242424242424,708.9393939393939,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900123646,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900123646,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 900744047,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-21.0,-21.0,100.0,0.0,False,False,False,0
 1012356024,,900,854.9783549783549,863.982683982684,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-12.0,-12.0,100.0,0.0,False,False,False,0
 1054546407,,575,510.8225108225108,523.6580086580086,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -357,15 +357,15 @@
 6813402,,575,849.5670995670995,794.6536796536797,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 80034457,,900,856.0606060606061,864.848484848485,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-13.5,-10.0,100.0,0.0,False,False,False,0
 77013624,,930,836.5800865800866,864.6060606060605,A+,A,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",11,2,-19.27272727272728,-5.0,100.0,0.0,False,False,False,0
-901528474,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,-10.0,-3.0,100.0,0.0,False,False,False,0
+901528474,,900,500.0,580.0,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-10.0,-3.0,100.0,0.0,False,False,False,0
 72490560,,930,724.025974025974,765.2207792207793,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-18.0,-18.0,100.0,0.0,False,False,False,0
 52928287,,900,548.7012987012987,618.961038961039,A+,B,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-9.0,-9.0,100.0,0.0,False,False,False,0
-901864262,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901864262,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 28345658,,930,534.6320346320347,613.7056277056278,A+,B,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-16.0,-16.0,100.0,0.0,False,False,False,0
-900259881,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900259881,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1051835121,,900,775.974025974026,800.7792207792209,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-6.0,-6.0,100.0,0.0,False,False,False,0
 1050605821,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,0,-7.0,-3.0,100.0,0.0,False,False,True,4
-901455904,,650,,650.0,B,B,250,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,0,5.0,5.0,0.0,100.0,False,False,False,0
+901455904,,650,750.0,730.0,B,B+,250,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,5.0,5.0,0.0,100.0,False,False,False,0
 1082934274,,575,821.4285714285714,772.1428571428572,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 16848927,,590,886.3636363636364,827.0909090909091,C+,A,190,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,13.0,13.0,0.0,100.0,False,False,False,0
 84009869,,930,805.1948051948052,830.1558441558442,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-39.0,-39.0,100.0,0.0,False,False,False,0
@@ -373,15 +373,15 @@
 19053619,,575,796.5367965367965,752.2294372294373,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,True,2
 10821000,,575,816.0173160173159,767.8138528138528,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1129542667,,590,877.7056277056276,820.1645021645022,C+,A,190,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,13.0,13.0,0.0,100.0,False,False,False,0
-901330477,,825,,825.0,A,A,500,150,175,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,6,0,-3.5,9.0,83.33333333333334,16.666666666666664,False,False,False,0
+901330477,,825,750.0,772.5,A,B+,500,150,175,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",6,0,-3.5,9.0,83.33333333333334,16.666666666666664,False,False,False,0
 52129680,,575,792.2077922077923,748.7662337662339,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 7722391,,575,914.5021645021644,846.6017316017316,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1094243631,,930,870.1298701298701,882.1038961038962,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-16.5,-10.0,100.0,0.0,False,False,False,0
-900696236,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900696236,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 25172291,,860,845.2380952380952,848.1904761904761,A,A,460,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-5.0,4.0,66.66666666666666,33.33333333333333,False,False,False,0
 19167231,,930,908.008658008658,914.6060606060606,A+,A+,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",5,2,-34.2,-28.0,100.0,0.0,False,False,False,0
-901415616,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-901955186,,815,,815.0,A,A,490,150,175,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,6,2,-19.666666666666668,6.0,66.66666666666666,33.33333333333333,False,False,False,0
+901415616,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
+901955186,,815,500.0,594.5,A,C+,490,150,175,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",6,2,-19.666666666666668,6.0,66.66666666666666,33.33333333333333,False,False,False,0
 1235050287,,930,758.6580086580087,792.926406926407,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-43.0,-43.0,100.0,0.0,False,False,False,0
 1095801850,,575,484.8484848484849,502.87878787878793,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1025526462,,575,745.6709956709957,711.5367965367966,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -401,7 +401,7 @@
 1061369195,,930,827.922077922078,848.3376623376624,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-31.0,-31.0,100.0,0.0,False,False,False,0
 70830019,,900,911.2554112554112,909.0043290043291,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,0,-13.75,-4.0,100.0,0.0,False,False,False,0
 1143462664,,575,436.1471861471862,463.91774891774895,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900421844,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,8,1,-22.0,-5.0,100.0,0.0,False,False,False,0
+900421844,,930,500.0,629.0,A+,B,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",8,1,-22.0,-5.0,100.0,0.0,False,False,False,0
 52241407,,575,715.3679653679653,687.2943722943722,C+,B,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 901914139,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
 34554971,,900,458.87445887445887,547.0995670995671,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-12.0,-12.0,100.0,0.0,False,False,False,0
@@ -409,7 +409,7 @@
 27327446,,930,469.69696969696975,561.7575757575758,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-35.0,-35.0,100.0,0.0,False,False,False,0
 1088268513,,900,812.7705627705628,830.2164502164503,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-12.0,-8.0,100.0,0.0,False,False,False,0
 1143855191,,930,835.4978354978355,854.3982683982684,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-27.5,-23.0,100.0,0.0,False,False,False,0
-901246455,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,0,-22.666666666666668,-10.0,100.0,0.0,False,False,False,0
+901246455,,930,1000.0,986.0,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,0,-22.666666666666668,-10.0,100.0,0.0,False,False,False,0
 22867420,,575,677.4891774891775,656.991341991342,C+,B,250,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,4.333333333333333,17.0,33.33333333333333,66.66666666666666,False,False,False,0
 1110567015,,900,483.76623376623377,567.012987012987,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-14.0,-14.0,100.0,0.0,False,False,False,0
 1143841638,,930,823.5930735930735,844.8744588744589,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-23.0,-23.0,100.0,0.0,False,False,False,0
@@ -417,17 +417,17 @@
 1088334876,,900,804.1125541125541,823.2900432900433,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-4.0,-1.0,100.0,0.0,False,False,False,0
 1023375509,,930,0.0,186.0,A+,D,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-17.0,-2.0,100.0,0.0,False,False,False,0
 1032251953,,575,792.2077922077923,748.7662337662339,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901411345,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-51.0,-51.0,100.0,0.0,False,False,False,0
+901411345,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-51.0,-51.0,100.0,0.0,False,False,False,0
 1118296855,,575,854.9783549783549,798.982683982684,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1004709915,,900,830.08658008658,844.0692640692641,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-4.0,-4.0,100.0,0.0,False,False,False,0
 1088355419,,860,865.8008658008658,864.6406926406927,A,A,460,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,1,-5.25,2.0,75.0,25.0,False,False,False,0
 24398703,,900,939.3939393939396,931.5151515151517,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-4.0,-4.0,100.0,0.0,False,False,False,0
 1026600327,,900,482.68398268398266,566.1471861471862,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-14.0,-14.0,100.0,0.0,False,False,False,0
-901859687,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,2,-28.33333333333333,-22.0,100.0,0.0,False,False,False,0
+901859687,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,2,-28.33333333333333,-22.0,100.0,0.0,False,False,False,0
 52958710,,900,969.6969696969696,955.7575757575758,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-15.0,-15.0,100.0,0.0,False,False,False,0
 79795599,,900,860.3896103896104,868.3116883116884,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
 52930724,,650,814.9350649350649,781.948051948052,B,B+,250,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,2.0,2.0,0.0,100.0,False,False,False,0
-901888250,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,4,1,-10.75,-10.0,100.0,0.0,False,False,False,0
+901888250,,900,500.0,580.0,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,1,-10.75,-10.0,100.0,0.0,False,False,False,0
 1118300106,,930,742.4242424242424,779.9393939393939,A+,B+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-19.0,-19.0,100.0,0.0,False,False,False,0
 1030560073,,900,906.9264069264068,905.5411255411254,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-1.0,-1.0,100.0,0.0,False,False,False,0
 1096223768,,900,830.08658008658,844.0692640692641,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-8.5,-8.0,100.0,0.0,False,False,False,0
@@ -449,17 +449,17 @@
 37580377,,785,675.3246753246754,697.2597402597403,B+,B,460,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-4.666666666666667,18.0,66.66666666666666,33.33333333333333,False,False,False,0
 33354399,,930,469.69696969696975,561.7575757575758,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-35.0,-35.0,100.0,0.0,False,False,False,0
 1192791072,,930,786.7965367965369,815.4372294372296,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-15.5,-2.0,100.0,0.0,False,False,False,0
-901616612,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-28.0,-28.0,100.0,0.0,False,False,False,0
-900338058,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,-26.666666666666668,-16.0,100.0,0.0,False,False,False,0
+901616612,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-28.0,-28.0,100.0,0.0,False,False,False,0
+900338058,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-26.666666666666668,-16.0,100.0,0.0,False,False,False,0
 57433215,,930,841.991341991342,859.5930735930737,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,0,-27.0,-23.0,100.0,0.0,False,False,False,0
 92099066,,575,909.090909090909,842.2727272727273,C+,A,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1115072459,,900,806.2770562770562,825.021645021645,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-10.5,-5.0,100.0,0.0,False,False,False,0
 1123140463,,930,744.5887445887446,800.2121212121211,A+,A,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",5,1,-16.6,-13.0,100.0,0.0,False,False,False,0
 3835572,,930,835.4978354978355,854.3982683982684,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-27.0,-27.0,100.0,0.0,False,False,False,0
 71525762,,575,454.5454545454545,478.6363636363636,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900443090,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900443090,,575,750.0,715.0,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1144092064,,785,847.4025974025974,828.6818181818181,B+,A,460,150,175,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",6,1,-4.666666666666667,8.0,66.66666666666666,33.33333333333333,False,False,False,0
-901413812,,650,,650.0,B,B,250,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,3.0,6.0,0.0,66.66666666666666,False,False,False,0
+901413812,,650,500.0,530.0,B,C+,250,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,3.0,6.0,0.0,66.66666666666666,False,False,False,0
 52294877,,740,834.4155844155844,815.5324675324675,B+,A,340,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-2.0,8.0,50.0,50.0,False,False,False,0
 1151969010,,900,800.8658008658008,820.6926406926407,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-6.0,-6.0,100.0,0.0,False,False,False,0
 1007554152,,930,869.047619047619,887.3333333333333,A+,A,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",10,2,-15.2,-7.0,100.0,0.0,False,False,False,0
@@ -471,8 +471,8 @@
 1130594440,,930,441.55844155844153,539.2467532467533,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-36.0,-36.0,100.0,0.0,False,False,False,0
 77029527,,900,783.5497835497836,818.4848484848485,A+,A,500,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",9,2,-13.11111111111111,0.0,88.88888888888889,0.0,False,False,False,0
 1130616527,,930,867.9653679653679,880.3722943722944,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-22.0,-12.0,100.0,0.0,False,False,False,0
-901045381,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-4.0,-4.0,100.0,0.0,False,False,False,0
-901181409,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-19.0,-19.0,100.0,0.0,False,False,False,0
+901045381,,900,500.0,580.0,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-4.0,-4.0,100.0,0.0,False,False,False,0
+901181409,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-19.0,-19.0,100.0,0.0,False,False,False,0
 10821301,,665,747.8354978354979,731.2683982683983,B,B+,340,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,2,-3.0,19.0,33.33333333333333,66.66666666666666,False,False,False,0
 31525300,,930,885.2813852813854,894.2251082251083,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-23.0,-23.0,100.0,0.0,False,False,False,0
 1004700971,,900,829.004329004329,843.2034632034632,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-1.0,-1.0,100.0,0.0,False,False,False,0
@@ -510,7 +510,7 @@
 37687165,,900,857.1428571428571,865.7142857142858,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-5.0,-5.0,100.0,0.0,False,False,False,0
 29352260,,930,823.5930735930735,844.8744588744589,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-44.0,-44.0,100.0,0.0,False,False,False,0
 1143978805,,575,805.1948051948052,759.1558441558442,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-901905809,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+901905809,,575,500.0,515.0,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 30574862,,930,791.1255411255411,818.9004329004329,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-36.0,-36.0,100.0,0.0,False,False,False,0
 30574185,,900,785.7142857142857,808.5714285714286,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-9.0,-9.0,100.0,0.0,False,False,False,0
 1004670474,,740,835.4978354978355,816.3982683982684,B+,A,340,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-4.0,2.0,50.0,50.0,False,False,False,0
@@ -533,20 +533,20 @@
 900351362,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-8.0,-8.0,100.0,0.0,False,False,False,0
 26560307,,740,799.7835497835498,781.8484848484849,B+,B+,490,150,100,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",8,2,-21.625,10.0,62.5,37.5,False,False,False,0
 12457111,,455,933.982683982684,838.1861471861472,C,A,130,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,16.666666666666668,36.0,0.0,100.0,False,False,False,0
-900663817,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,0,-13.0,-9.0,100.0,0.0,False,False,True,1
+900663817,,900,500.0,580.0,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-13.0,-9.0,100.0,0.0,False,False,True,1
 52016243,,575,324.67532467532465,374.7402597402597,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 29400291,,590,811.6883116883117,745.1818181818181,C+,B+,190,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",7,2,9.0,18.0,14.285714285714285,85.71428571428571,False,False,False,0
 1042253590,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-901687224,,825,,825.0,A,A,500,150,175,1.0,0.0,intermedio,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,35,3,-7.4,17.0,80.0,14.285714285714285,False,False,False,0
+901687224,,825,1000.0,895.0,A,A,500,150,175,0.6,0.4,intermedio,"Híbrido: Cliente intermedio con historial amplio (35 pagos, +10%): peso PLATAM 60%, HCPN 40%",35,3,-7.4,17.0,80.0,14.285714285714285,False,False,False,0
 901152209,,900,,900.0,A+,A+,500,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-2.0,-2.0,100.0,0.0,False,False,False,0
 1082947107,,900,493.5064935064935,574.8051948051948,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-12.0,-12.0,100.0,0.0,False,False,False,0
 1033700838,,900,889.6103896103896,891.6883116883117,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-9.0,-9.0,100.0,0.0,False,False,False,0
 38463104,,900,844.1558441558441,855.3246753246754,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
 1026571551,,530,470.7792207792208,482.62337662337666,C+,C,130,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,16.0,16.0,0.0,100.0,False,False,False,0
-901881743,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,1,0,-28.0,-28.0,100.0,0.0,False,False,False,0
+901881743,,930,1000.0,986.0,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-28.0,-28.0,100.0,0.0,False,False,False,0
 52276248,,900,873.3766233766233,878.7012987012987,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-13.0,-13.0,100.0,0.0,False,False,False,0
 67029002,,930,772.7272727272727,819.9090909090909,A+,A,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",5,2,-19.0,-5.0,100.0,0.0,False,False,False,0
-901841787,,930,,930.0,A+,A+,530,150,250,1.0,0.0,intermedio,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,20,3,-29.2,-8.0,100.0,0.0,False,False,False,0
+901841787,,930,500.0,758.0,A+,B+,530,150,250,0.6,0.4,intermedio,"Híbrido: Cliente intermedio con historial amplio (20 pagos, +10%): peso PLATAM 60%, HCPN 40%",20,3,-29.2,-8.0,100.0,0.0,False,False,False,0
 1043872910,,900,349.5670995670996,459.6536796536797,A+,C,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-9.5,-2.0,100.0,0.0,False,False,False,0
 1033780333,,395,803.030303030303,680.621212121212,D,B,70,150,175,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",6,2,46.333333333333336,73.0,0.0,100.0,False,False,False,0
 24589015,,900,927.4891774891776,921.9913419913421,A+,A+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,2,-10.333333333333334,-4.0,100.0,0.0,False,False,False,0
@@ -562,7 +562,7 @@
 901503312,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
 1108641967,,950,,950.0,A+,A+,550,150,250,1.0,0.0,nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,18,3,-15.833333333333334,2.0,94.44444444444444,5.555555555555555,False,False,False,0
 92531916,,575,822.5108225108225,773.0086580086581,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900539741,,590,,590.0,C+,C+,340,150,100,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,0,-2.0,36.0,50.0,50.0,False,False,True,1
+900539741,,590,1000.0,918.0,C+,A+,340,150,100,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-2.0,36.0,50.0,50.0,False,False,True,1
 1193112000,,470,800.8658008658008,734.6926406926407,C,B+,70,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,68.0,68.0,0.0,100.0,False,False,False,0
 64516911,,930,449.1341991341991,593.3939393939393,A+,C+,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",6,2,-31.83333333333333,-8.0,100.0,0.0,False,False,False,0
 53057046,,665,929.6536796536795,876.7229437229437,B,A,340,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-1.5,11.0,50.0,50.0,False,False,False,0
@@ -573,7 +573,7 @@
 1030596959,,575,774.8917748917748,734.91341991342,C+,B+,250,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,1.5,12.0,50.0,50.0,False,False,False,0
 24368700,,900,869.047619047619,875.2380952380953,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-14.0,-14.0,100.0,0.0,False,False,False,0
 1144165869,,930,825.7575757575758,846.6060606060606,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-24.5,-23.0,100.0,0.0,False,False,False,0
-901678549,,395,,395.0,D,D,70,150,175,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,37.66666666666666,50.0,0.0,100.0,False,False,False,0
+901678549,,395,750.0,679.0,D,B,70,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,37.66666666666666,50.0,0.0,100.0,False,False,False,0
 32782443,,575,479.4372294372295,498.5497835497836,C+,C,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1024523726,,900,385.28138528138527,488.2251082251082,A+,C,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-9.333333333333334,-1.0,100.0,0.0,False,False,False,0
 1048607620,,395,,395.0,D,D,70,150,175,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,4,2,37.75,65.0,0.0,100.0,False,False,False,0
@@ -582,11 +582,11 @@
 94456578,,900,433.982683982684,527.1861471861473,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-2.0,-2.0,100.0,0.0,False,False,False,0
 1026273920,,770,793.2900432900433,788.6320346320347,B+,B+,370,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,2,1.0,10.0,66.66666666666666,33.33333333333333,False,False,False,0
 1144172041,,650,846.3203463203464,807.0562770562772,B,A,250,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,5.0,6.0,0.0,100.0,False,False,False,0
-901500437,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,0,-16.0,-16.0,100.0,0.0,False,False,False,0
+901500437,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-16.0,-16.0,100.0,0.0,False,False,False,0
 1192808755,,900,765.1515151515151,792.1212121212121,A+,B+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-3.0,-3.0,100.0,0.0,False,False,False,0
-900431161,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,-29.666666666666668,-10.0,100.0,0.0,False,False,False,0
+900431161,,930,1000.0,986.0,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-29.666666666666668,-10.0,100.0,0.0,False,False,False,0
 1042350895,,900,851.7316017316018,861.3852813852815,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-7.5,-5.0,100.0,0.0,False,False,False,0
-901656761,,900,,900.0,A+,A+,500,150,250,1.0,0.0,nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,4,3,-9.75,-4.0,100.0,0.0,False,False,False,0
+901656761,,900,1000.0,970.0,A+,A+,500,150,250,0.3,0.7,nuevo,"Híbrido: Cliente nuevo con poco historial (4 pagos, -10%): peso PLATAM 30%, HCPN 70%",4,3,-9.75,-4.0,100.0,0.0,False,False,False,0
 36312181,,930,502.16450216450215,630.5151515151515,A+,B,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",12,2,-19.166666666666668,-3.0,100.0,0.0,False,False,False,0
 31485290,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
 1106513196,,900,846.3203463203464,857.0562770562772,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-11.0,-11.0,100.0,0.0,False,False,False,0
@@ -596,7 +596,7 @@
 76224665,,930,814.9350649350649,837.948051948052,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-16.0,-16.0,100.0,0.0,False,False,False,0
 1144076548,,900,839.8268398268398,851.8614718614718,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-12.0,-4.0,100.0,0.0,False,False,False,0
 1002395910,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
-900470946,,575,,575.0,C+,C+,300,150,125,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,0,0,,,,,False,False,False,0
+900470946,,575,1000.0,915.0,C+,A+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 43642851,,785,468.6147186147186,595.1688311688312,B+,C+,460,150,175,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",6,3,-11.0,8.0,66.66666666666666,33.33333333333333,False,False,False,0
 1022368861,,900,856.0606060606061,864.848484848485,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-11.0,-10.0,100.0,0.0,False,False,False,0
 52362189,,880,462.1212121212121,712.8484848484849,A,B+,480,150,250,0.6,0.4,intermedio,"Híbrido: Cliente intermedio con historial amplio (47 pagos, +10%): peso PLATAM 60%, HCPN 40%",47,4,-14.787234042553193,4.0,78.72340425531915,17.02127659574468,False,False,False,0
@@ -875,7 +875,7 @@
 1233491976,,1000,806.2770562770562,941.8831168831168,A+,A+,600,150,250,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (56 pagos, +10%): peso PLATAM 70%, HCPN 30%",56,13,-58.17857142857143,-5.0,100.0,0.0,False,False,False,0
 39641170,,930,955.6277056277056,950.5021645021645,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-75.0,-75.0,100.0,0.0,False,False,False,0
 73202258,,575,769.4805194805194,730.5844155844156,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-900220391,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,3,1,-71.0,-49.0,100.0,0.0,False,False,False,0
+900220391,,930,1000.0,986.0,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (3 pagos, -10%): peso PLATAM 20%, HCPN 80%",3,1,-71.0,-49.0,100.0,0.0,False,False,False,0
 30206515,,1000,885.2813852813854,954.1125541125541,A+,A+,600,150,250,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",18,15,-95.0,-33.0,100.0,0.0,False,False,False,0
 1016018030,,970,859.3073593073593,914.6536796536797,A+,A+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",11,8,-90.36363636363636,-35.0,100.0,0.0,False,False,False,0
 1073427900,,575,820.3463203463203,771.2770562770563,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
@@ -967,7 +967,7 @@
 1122655760,,775,806.2770562770562,784.3831168831168,B+,B+,600,150,25,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (73 pagos, +10%): peso PLATAM 70%, HCPN 30%",73,23,-73.57534246575342,28.0,84.93150684931507,15.068493150684931,False,False,False,0
 59653371,,930,816.0173160173159,850.2121212121211,A+,A,530,150,250,0.3,0.7,muy_nuevo,"Híbrido: Cliente muy_nuevo: peso PLATAM 30%, HCPN 70%",7,1,-243.42857142857144,-224.0,100.0,0.0,False,False,False,0
 1082977378,,930,798.7012987012987,851.2207792207791,A+,A,530,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",16,3,-225.5,-200.0,100.0,0.0,False,False,False,0
-901491025,,555,,555.0,C+,C+,380,150,25,1.0,0.0,intermedio,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,13,11,-9.923076923076923,112.0,46.15384615384615,53.84615384615385,False,False,False,0
+901491025,,555,500.0,527.5,C+,C+,380,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",13,11,-9.923076923076923,112.0,46.15384615384615,53.84615384615385,False,False,False,0
 1005813621,,950,834.4155844155844,880.6493506493506,A+,A,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",9,3,-229.11111111111111,-186.0,100.0,0.0,False,False,False,0
 1022407692,,930,795.4545454545454,822.3636363636364,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,1,-236.5,-216.0,100.0,0.0,False,False,False,0
 1121853698,,930,314.93506493506493,437.94805194805195,A+,C,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-90.5,-57.0,100.0,0.0,False,False,False,0
@@ -1404,7 +1404,7 @@
 51854874,,950,869.047619047619,901.4285714285714,A+,A+,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",6,4,-28.0,-1.0,100.0,0.0,False,False,False,0
 26670164,,525,866.8831168831169,695.9415584415585,C+,B,350,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",10,10,7.3,202.0,70.0,30.0,False,False,False,0
 45556046,,910,1.0822510822510822,273.75757575757575,A+,D,510,150,250,0.3,0.7,nuevo,"Híbrido: Cliente nuevo con poco historial (4 pagos, -10%): peso PLATAM 30%, HCPN 70%",4,5,-16.0,1.0,75.0,25.0,False,False,False,0
-901661975,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,0,-34.0,-34.0,100.0,0.0,False,False,False,0
+901661975,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-34.0,-34.0,100.0,0.0,False,False,False,0
 80250459,,315,462.1212121212121,373.8484848484849,D,D,140,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",16,23,309.0,653.0,25.0,75.0,False,False,False,0
 1088030790,,970,865.8008658008658,917.9004329004329,A+,A+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",8,10,-27.0,-16.0,100.0,0.0,False,False,False,0
 1045702358,,575,874.4588744588744,814.5670995670996,C+,A,250,150,175,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (4 pagos, -10%): peso PLATAM 20%, HCPN 80%",4,1,1.25,15.0,50.0,50.0,False,False,False,0
@@ -1448,7 +1448,7 @@
 52445766,,775,729.4372294372295,756.7748917748918,B+,B+,600,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",9,20,-37.0,216.0,88.88888888888889,11.11111111111111,False,False,False,0
 40040280,,930,859.3073593073593,873.4458874458875,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-35.0,-35.0,100.0,0.0,False,False,False,0
 34000753,,465,825.7575757575758,681.4545454545455,C,B,290,150,25,0.4,0.6,intermedio,"Híbrido: Cliente intermedio con poco historial (4 pagos, -10%): peso PLATAM 40%, HCPN 60%",4,9,19.5,175.0,75.0,25.0,False,False,False,0
-1022417077,,745,466.4502164502164,633.5800865800866,B+,B,570,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",10,18,-12.0,172.0,90.0,10.0,False,False,False,0
+1022417077,,745,750.0,747.0,B+,B+,570,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",10,18,-12.0,172.0,90.0,10.0,False,False,False,0
 71662715,,715,839.8268398268398,764.9307359307359,B+,B+,540,150,25,0.6,0.4,intermedio,"Híbrido: Cliente intermedio con historial amplio (37 pagos, +10%): peso PLATAM 60%, HCPN 40%",37,9,-9.45945945945946,207.0,89.1891891891892,10.81081081081081,False,False,False,0
 29107266,,400,844.1558441558441,710.9090909090908,C,B+,150,150,100,0.3,0.7,nuevo,"Híbrido: Cliente nuevo con poco historial (4 pagos, -10%): peso PLATAM 30%, HCPN 70%",4,5,18.25,49.0,25.0,75.0,False,False,False,0
 1004088974,,930,630.952380952381,690.7619047619048,A+,B,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-30.0,-30.0,100.0,0.0,False,False,False,0
@@ -1475,7 +1475,7 @@
 98466524,,930,918.8311688311688,921.0649350649351,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,0,-36.0,-36.0,100.0,0.0,False,False,False,0
 73116914,,745,731.6017316017316,738.3008658008657,B+,B+,570,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",18,11,-48.5,94.0,94.44444444444444,5.555555555555555,False,False,False,0
 10237983,,950,948.051948051948,949.0259740259739,A+,A+,550,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",10,6,-46.6,-31.0,100.0,0.0,False,False,False,0
-901740938,,930,,930.0,A+,A+,530,150,250,1.0,0.0,muy_nuevo,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,2,2,-21.5,-12.0,100.0,0.0,False,False,False,0
+901740938,,930,500.0,586.0,A+,C+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-21.5,-12.0,100.0,0.0,False,False,False,0
 52236759,,715,856.0606060606061,771.4242424242425,B+,B+,540,150,25,0.6,0.4,intermedio,"Híbrido: Cliente intermedio con historial amplio (22 pagos, +10%): peso PLATAM 60%, HCPN 40%",22,10,-12.363636363636363,183.0,81.81818181818183,18.181818181818183,False,False,False,0
 1024534047,,1000,888.5281385281385,955.4112554112554,A+,A+,600,150,250,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",16,19,-30.1875,-3.0,100.0,0.0,False,False,False,0
 52533467,,880,793.2900432900433,819.3030303030303,A,A,480,150,250,0.3,0.7,nuevo,"Híbrido: Cliente nuevo con poco historial (3 pagos, -10%): peso PLATAM 30%, HCPN 70%",3,5,-14.333333333333334,1.0,66.66666666666666,33.33333333333333,False,False,False,0
@@ -1494,7 +1494,7 @@
 1006576774,,970,656.9264069264069,782.1558441558441,A+,B+,570,150,250,0.4,0.6,intermedio,"Híbrido: Cliente intermedio con poco historial (2 pagos, -10%): peso PLATAM 40%, HCPN 60%",2,11,-57.5,-28.0,100.0,0.0,False,False,False,0
 19438950,,970,509.7402597402597,739.8701298701299,A+,B+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",7,7,-15.714285714285714,5.0,85.71428571428571,14.285714285714285,False,False,False,0
 1047241030,,970,777.0562770562772,873.5281385281386,A+,A,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",7,7,-38.285714285714285,-28.0,100.0,0.0,False,False,False,0
-1065586016,,715,,715.0,B+,B+,540,150,25,1.0,0.0,intermedio,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,6,11,-1.6666666666666667,181.0,83.33333333333334,16.666666666666664,False,False,False,0
+1065586016,,715,500.0,607.5,B+,B,540,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",6,11,-1.6666666666666667,181.0,83.33333333333334,16.666666666666664,False,False,False,0
 1121918403,,950,926.4069264069263,935.8441558441558,A+,A+,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",8,5,-49.125,-31.0,100.0,0.0,False,False,False,0
 1007688232,,435,739.1774891774892,556.6709956709957,C,C+,260,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",18,12,58.66666666666666,318.0,66.66666666666666,33.33333333333333,False,False,False,0
 1013646327,,1000,601.7316017316018,840.6926406926407,A+,A,600,150,250,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",13,12,-40.61538461538461,-25.0,100.0,0.0,False,False,False,0
@@ -1542,7 +1542,7 @@
 39762402,,930,923.1601731601731,924.5281385281386,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (2 pagos, -10%): peso PLATAM 20%, HCPN 80%",2,2,-34.0,-27.0,100.0,0.0,False,False,False,0
 47433380,,930,927.4891774891776,927.9913419913421,A+,A+,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-38.0,-38.0,100.0,0.0,False,False,False,0
 1048282030,,655,,655.0,B,B,480,150,25,1.0,0.0,establecido,Sin HCPN: usa 100% PLATAM V2.0 basado en comportamiento interno,9,17,4.0,245.0,88.88888888888889,11.11111111111111,False,False,False,0
-1022931240,,950,643.9393939393939,796.969696969697,A+,B+,550,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",6,6,-35.0,-26.0,100.0,0.0,False,False,False,0
+1022931240,,950,250.0,600.0,A+,B,550,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",6,6,-35.0,-26.0,100.0,0.0,False,False,False,0
 53101079,,970,477.2727272727273,723.6363636363636,A+,B+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",6,8,-28.33333333333333,-2.0,100.0,0.0,False,False,False,0
 80397631,,575,582.2510822510823,580.8008658008658,C+,C+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 43827330,,435,819.2640692640692,588.7056277056276,C,C+,260,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",16,22,38.375,197.0,62.5,31.25,False,False,False,0
@@ -1759,11 +1759,11 @@
 10897454,,950,882.0346320346321,909.2207792207793,A+,A+,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",9,5,-35.77777777777778,-24.0,100.0,0.0,False,False,False,0
 22785911,,575,743.5064935064936,709.8051948051949,C+,B+,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
 1013637223,,435,782.4675324675325,504.49350649350646,C,C+,260,150,25,0.7999999999999999,0.2,maduro,"Híbrido: Cliente maduro con historial amplio (41 pagos, +10%): peso PLATAM 80%, HCPN 20%",41,27,6.0,105.0,41.46341463414634,58.53658536585365,False,False,False,0
-1039448174,,775,856.0606060606061,799.3181818181818,B+,B+,600,150,25,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (32 pagos, +10%): peso PLATAM 70%, HCPN 30%",32,13,-24.6875,202.0,90.625,9.375,False,False,False,0
+1039448174,,775,500.0,692.5,B+,B,600,150,25,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (32 pagos, +10%): peso PLATAM 70%, HCPN 30%",32,13,-24.6875,202.0,90.625,9.375,False,False,False,0
 1143331373,,820,455.6277056277056,637.8138528138528,A,B,570,150,100,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",10,7,-30.2,28.0,90.0,10.0,False,False,False,0
 32909216,,950,509.7402597402597,641.8181818181818,A+,B,550,150,250,0.3,0.7,nuevo,"Híbrido: Cliente nuevo con poco historial (4 pagos, -10%): peso PLATAM 30%, HCPN 70%",4,5,-36.25,-22.0,100.0,0.0,False,False,False,0
 1127616931,,775,766.2337662337662,771.4935064935065,B+,B+,600,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",11,12,-32.27272727272727,81.0,90.9090909090909,9.090909090909092,False,False,False,0
-1007382265,,970,706.7099567099567,838.3549783549784,A+,A,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",9,7,-42.66666666666666,-24.0,100.0,0.0,False,False,False,0
+1007382265,,970,1000.0,985.0,A+,A+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",9,7,-42.66666666666666,-24.0,100.0,0.0,False,False,False,0
 31481484,,530,464.2857142857143,477.42857142857144,C+,C,130,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,20.0,20.0,0.0,100.0,False,False,False,0
 88140241,,315,480.5194805194805,364.65584415584414,D,D,140,150,25,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (21 pagos, +10%): peso PLATAM 70%, HCPN 30%",21,18,67.0952380952381,293.0,47.61904761904761,52.38095238095239,False,False,False,0
 39698089,,950,908.008658008658,924.8051948051948,A+,A+,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",10,5,-45.8,-22.0,100.0,0.0,False,False,False,0
@@ -1783,14 +1783,14 @@
 45756087,,745,805.1948051948052,775.0974025974026,B+,B+,570,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",7,11,-29.142857142857142,213.0,85.71428571428571,14.285714285714285,False,False,False,0
 52480725,,775,825.7575757575758,795.3030303030303,B+,B+,600,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",13,22,-23.15384615384616,171.0,92.3076923076923,7.6923076923076925,False,False,False,0
 1065567594,,575,310.6060606060606,363.4848484848485,C+,D,300,150,125,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (0 pagos, -10%): peso PLATAM 20%, HCPN 80%",0,0,,,,,False,False,False,0
-1140885684,,900,809.5238095238095,827.6190476190477,A+,A,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-14.0,-14.0,100.0,0.0,False,False,False,0
+1140885684,,900,500.0,580.0,A+,C+,500,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-14.0,-14.0,100.0,0.0,False,False,False,0
 52237654,,970,929.6536796536795,949.8268398268398,A+,A+,570,150,250,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",5,6,-51.6,-29.0,100.0,0.0,False,False,False,0
 55162293,,780,727.2727272727273,753.6363636363636,B+,B+,530,150,100,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",19,9,-22.526315789473685,25.0,68.42105263157895,31.57894736842105,False,False,False,0
 9111966,,1000,787.8787878787879,936.3636363636364,A+,A+,600,150,250,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (84 pagos, +10%): peso PLATAM 70%, HCPN 30%",84,12,-36.92857142857143,-8.0,100.0,0.0,False,False,False,0
 1143124618,,775,870.1298701298701,803.538961038961,B+,A,600,150,25,0.7,0.3,establecido,"Híbrido: Cliente establecido con historial amplio (32 pagos, +10%): peso PLATAM 70%, HCPN 30%",32,15,-41.875,173.0,96.875,3.125,False,False,False,0
 12546082,,930,865.8008658008658,878.6406926406927,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-69.0,-69.0,100.0,0.0,False,False,False,0
 32879695,,775,361.4718614718614,609.5887445887446,B+,B,600,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",10,13,-35.9,78.0,90.0,10.0,False,False,False,0
-1049948360,,465,600.6493506493507,532.8246753246754,C,C+,290,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",8,10,16.25,135.0,62.5,37.5,False,False,False,0
+1049948360,,465,1000.0,732.5,C,B+,290,150,25,0.5,0.5,intermedio,"Híbrido: Cliente intermedio: peso PLATAM 50%, HCPN 50%",8,10,16.25,135.0,62.5,37.5,False,False,False,0
 32871394,,950,453.46320346320346,652.077922077922,A+,B,550,150,250,0.4,0.6,nuevo,"Híbrido: Cliente nuevo: peso PLATAM 40%, HCPN 60%",5,5,-56.6,-37.0,100.0,0.0,False,False,False,0
 39763934,,930,882.0346320346321,891.6277056277057,A+,A,530,150,250,0.2,0.8,muy_nuevo,"Híbrido: Cliente muy_nuevo con poco historial (1 pagos, -10%): peso PLATAM 20%, HCPN 80%",1,0,-95.0,-95.0,100.0,0.0,False,False,False,0
 1012322058,,745,873.3766233766233,796.3506493506493,B+,B+,570,150,25,0.6,0.4,establecido,"Híbrido: Cliente establecido: peso PLATAM 60%, HCPN 40%",6,21,-9.0,76.0,83.33333333333334,16.666666666666664,False,False,False,0

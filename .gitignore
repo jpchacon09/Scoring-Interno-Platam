@@ -42,3 +42,5 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+# PDFs empresariales (no incluir en repo)
+pdfs_empresas_experian/
