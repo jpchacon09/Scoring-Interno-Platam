@@ -44,3 +44,8 @@ Thumbs.db
 *.bak
 # PDFs empresariales (no incluir en repo)
 pdfs_empresas_experian/
+
+# ML Models y artifacts
+*.pkl
+feature_importance.png
+ml_training_data.csv

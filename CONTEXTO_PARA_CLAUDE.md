@@ -1,7 +1,7 @@
 # Contexto del Proyecto - Sistema de Scoring PLATAM
 
-**Última actualización:** 30 de diciembre de 2025
-**Fase actual:** Sistema V2.0 implementado - Corrección de lógica de planes de pago completada
+**Última actualización:** 7 de enero de 2026
+**Fase actual:** Sistema V2.0 + Defaults integrados - Listo para Machine Learning
 
 ---
 
@@ -62,7 +62,58 @@ Sistema híbrido que combina PLATAM V2.0 + HCPN (Experian) con pesos dinámicos 
 - ✅ `data/processed/hybrid_scores.csv`
 - ✅ Commit: `75b1c92` - "fix: Correct payment plan logic in scoring calculation"
 
-### 4. Visualizaciones y Análisis
+### 4. Integración de Scores Empresariales
+**Fecha:** 6 enero 2026
+
+**Problema:** Empresas (personas jurídicas) no tenían scores Experian
+
+**Solución:**
+- Procesamiento de 172 PDFs de Experian para empresas
+- Normalización de escala 0-5 (invertida) a 0-1000
+- 125 empresas procesadas exitosamente (72.7% tasa de éxito)
+- 60 empresas con scores Experian integrados
+- 30 empresas sin score usan base 500 pts
+- Documentado en `PROCESO_SCORES_EMPRESARIALES.md`
+
+**Archivos actualizados:**
+- ✅ `scores_empresas_experian_normalized.csv`
+- ✅ `master_dataset.csv` (con scores empresariales)
+- ✅ `hybrid_scores.csv` (recalculados con empresas)
+- ✅ Commit: `3bfcd37` - "feat: Integrate Experian business scores"
+
+### 5. Integración de Datos de Defaults
+**Fecha:** 7 enero 2026
+
+**Objetivo:** Preparar sistema para Machine Learning con variable target real
+
+**Fuente:** `Defaults.csv` (9,097 préstamos, 1,704 clientes únicos)
+
+**Criterios de Default:**
+- l_status = "Default", O
+- Mora > 180 días
+
+**Resultados:**
+- **100 clientes en default** (5.45% tasa de default)
+- Balance en default: $186,228,906
+- Mora máxima: 853 días
+- **VALIDACIÓN:** Los scores SÍ predicen defaults
+  - Clientes sin default: Hybrid Score promedio = 767.9
+  - Clientes con default: Hybrid Score promedio = 623.2
+  - **Diferencia: -144.7 puntos**
+
+**Tasa de Default por Rating (Validación del Sistema):**
+- Rating D: 21.9% default rate (16/73)
+- Rating C: 13.1% default rate (8/61)
+- Rating A+: 3.6% default rate (31/858)
+- Rating A: 1.5% default rate (1/65)
+
+**Archivos creados/actualizados:**
+- ✅ `ml_training_data.csv` - Dataset listo para ML (1,835 clientes, 26 features)
+- ✅ `master_dataset.csv` (con default_flag y métricas)
+- ✅ `SCORES_V2_ANALISIS_COMPLETO.csv` (con información de defaults)
+- ✅ Script: `scripts/integrate_defaults_data.py`
+
+### 6. Visualizaciones y Análisis
 - [x] Dashboard dinámico CSV generado
 - [x] Gráficos comparativos (PLATAM vs HCPN vs Híbrido)
 - [x] Análisis estadístico completo (mean, median, std, skewness, kurtosis)
@@ -113,59 +164,54 @@ Sistema híbrido que combina PLATAM V2.0 + HCPN (Experian) con pesos dinámicos 
 
 ---
 
-## 🎯 Próximos Pasos Sugeridos
+## 🎯 Próximos Pasos - Machine Learning
 
-### Opción 1: Optimización del Sistema Actual (Corto Plazo)
-**Duración estimada:** 3-4 semanas
+### ✅ COMPLETADO: Preparación de Datos para ML
+- [x] Recopilar datos de defaults (100 clientes identificados)
+- [x] Crear variable target `default_flag`
+- [x] Validar poder predictivo del sistema actual
+- [x] Crear dataset `ml_training_data.csv` (1,835 clientes, 26 features)
 
-1. **Validación con Datos de Default**
-   - [ ] Recopilar datos históricos de clientes con >180 días mora
-   - [ ] Calcular tasas de default por rating
-   - [ ] Validar poder predictivo del score V2.0
-   - [ ] Ajustar umbrales de rating si es necesario
+### 🚀 PASO INMEDIATO: Baseline ML Local
+**Duración estimada:** 1 semana
 
-2. **Monitoreo en Producción**
-   - [ ] Implementar tracking de scores nuevos vs reales defaults
-   - [ ] Crear dashboard de monitoreo mensual
-   - [ ] Establecer alertas para cambios significativos
+1. **Entrenar Modelo Baseline** ⭐
+   ```bash
+   python train_baseline.py
+   ```
+   - Entrenar XGBoost localmente
+   - Validar AUC-ROC > 0.70
+   - Analizar feature importance
+   - Guardar modelo y scaler
 
-3. **Análisis de Casos Extremos**
-   - [ ] Investigar clientes con rating D (73 clientes)
-   - [ ] Revisar discrepancias grandes PLATAM vs HCPN
-   - [ ] Documentar casos especiales
+2. **Validar Resultados**
+   - Revisar métricas (Precision, Recall, F1, AUC)
+   - Comparar con baseline del sistema actual
+   - Identificar top features predictivas
+   - Documentar hallazgos
 
-### Opción 2: Sistema Híbrido Avanzado (Mediano Plazo)
-**Duración estimada:** 1-2 meses
-
-1. **Calibración Avanzada**
-   - [ ] A/B testing de pesos dinámicos
-   - [ ] Optimizar umbrales de madurez (muy_nuevo, nuevo, etc.)
-   - [ ] Ajustar pesos según tasa de default real
-
-2. **Features Adicionales**
-   - [ ] Incorporar velocidad de cambio en DPD
-   - [ ] Añadir estacionalidad de pagos
-   - [ ] Considerar concentración de deuda
-
-### Opción 3: Migración a ML con Vertex AI (Largo Plazo)
-**Duración estimada:** 3-6 meses
+### 🏗️ SIGUIENTE: Migración a Vertex AI
+**Duración estimada:** 1-2 semanas
 
 Ver roadmap completo en `VERTEX_AI_ML_ROADMAP.md`
 
-1. **Fase de Preparación**
-   - [ ] Recopilar labels de default (target variable)
-   - [ ] Feature engineering
-   - [ ] Setup de Vertex AI
+1. **Setup de Infraestructura GCP**
+   - [ ] Crear/configurar proyecto GCP
+   - [ ] Habilitar Vertex AI API
+   - [ ] Crear bucket GCS
+   - [ ] Subir ml_training_data.csv
 
-2. **Fase de Entrenamiento**
-   - [ ] Train/test split
-   - [ ] Modelo baseline (Logistic Regression)
-   - [ ] Modelos avanzados (XGBoost, Neural Nets)
+2. **Entrenamiento en Vertex AI**
+   - [ ] Crear Vertex AI Workbench
+   - [ ] Entrenar modelo en la nube
+   - [ ] Registrar en Model Registry
+   - [ ] Deploy a endpoint
 
-3. **Fase de Deployment**
-   - [ ] Modelo en paralelo con V2.0
-   - [ ] Validación en producción
-   - [ ] Migración gradual
+3. **Integración con Sistema**
+   - [ ] API de predicción
+   - [ ] Combinar ML + Híbrido
+   - [ ] Monitoreo en producción
+   - [ ] Re-entrenamiento mensual
 
 ---
 
@@ -201,11 +247,20 @@ python scripts/11_create_interactive_simulator.py
 
 ### CSVs de Análisis (Raíz del Proyecto)
 - **`SCORES_V2_ANALISIS_COMPLETO.csv`** - Análisis completo para el equipo de analytics
-  - 1,835 clientes, 24 columnas
-  - Incluye: scores, ratings, componentes, pesos, flags de planes de pago
+  - 1,835 clientes, 24+ columnas
+  - Incluye: scores, ratings, componentes, pesos, flags de planes de pago, default_flag
+
+- **`ml_training_data.csv`** ⭐ - Dataset listo para Machine Learning
+  - 1,835 clientes, 26 features
+  - Incluye: default_flag (target), scores, componentes, métricas de mora, planes de pago
+  - Balance de clases: 94.6% no-default, 5.4% default
 
 - **`ESTADISTICAS_SCORES_V2.csv`** - Estadísticas agregadas
   - Mean, median, std, min, max, quartiles, skewness, kurtosis
+
+- **`Defaults.csv`** - Fuente de datos de defaults
+  - 9,097 préstamos, 1,704 clientes únicos
+  - Columnas: l_cl_doc_number, l_status, l_due_days, l_balance_total
 
 - **`export-planes_de_pago-30-12-2025.csv`** - Fuente de planes de pago
   - 25 planes, 13 clientes únicos
@@ -335,27 +390,37 @@ python scripts/11_create_interactive_simulator.py
 
 ## 🚀 Cómo Continuar Desde Aquí
 
-### Si quieres validar el sistema:
-1. Recopilar datos de default histórico
-2. Ejecutar análisis de poder predictivo
-3. Calcular tasas de default por rating
+### PASO INMEDIATO: Entrenar Modelo Baseline 🎯
+```bash
+cd "/Users/jpchacon/Scoring Interno"
+python train_baseline.py
+```
 
-### Si quieres optimizar:
+**Qué esperar:**
+- AUC-ROC entre 0.70-0.85 (bueno a excelente)
+- Top features más predictivas identificadas
+- Modelo guardado como `xgboost_model.pkl`
+- Gráfico de feature importance generado
+
+### Después del baseline local:
+1. **Validar resultados** y compartir métricas
+2. **Configurar GCP** para Vertex AI
+3. **Subir modelo a la nube** y crear endpoint
+4. **Integrar con sistema actual** (Híbrido + ML)
+
+### Si quieres optimizar el sistema actual (mientras entrena ML):
 1. Analizar casos extremos (ratings D)
 2. Ajustar umbrales de rating si necesario
 3. A/B testing de pesos híbridos
 
-### Si quieres migrar a ML:
-1. Preparar labels de default (target)
-2. Feature engineering
-3. Seguir roadmap en `VERTEX_AI_ML_ROADMAP.md`
-
 ---
 
 **Notas finales:**
-- Todos los CSVs están actualizados con la lógica correcta
-- Sistema listo para producción
-- Documentación completa disponible
-- Git history preservado para auditoría
+- ✅ Todos los CSVs están actualizados con defaults
+- ✅ Sistema validado: scores SÍ predicen defaults (-144.7 pts de diferencia)
+- ✅ Dataset ML listo: `ml_training_data.csv`
+- ✅ Script baseline listo: `train_baseline.py`
+- ✅ Documentación ML actualizada: `VERTEX_AI_ML_ROADMAP.md`
+- ✅ Git history preservado para auditoría
 
-**Estado:** ✅ Sistema V2.0 validado y funcionando correctamente
+**Estado:** ✅ Sistema V2.0 validado + Datos ML preparados + Listo para entrenar primer modelo
