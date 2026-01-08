@@ -1,0 +1,47 @@
+# Archivos que NO se suben a Cloud Run
+.git
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.log
+.DS_Store
+
+# Datos no necesarios
+export-*.csv
+pdfs_empresariales_experian/
+models/
+*.pkl
+!data/processed/hybrid_scores.csv
+
+# Scripts locales
+test_*.py
+visualize_*.py
+compare_*.py
+train_*.py
+save_*.py
+optimize_*.py
+fix_*.py
+retrain_*.py
+deploy_*.py
+update_*.py
+cleanup_*.py
+predict.py
+predict_vertex.py
+
+# Documentación (no necesaria en Cloud Run)
+*.md
+Instrucciones*
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# Vertex custom (no necesario)
+vertex_custom/
+
+# App completa (solo necesitamos api_scoring_cedula.py)
+api_scoring_completo.py
+app.py
