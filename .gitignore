@@ -54,3 +54,6 @@ model_visualizations.png
 ml_training_data.csv
 threshold_recomendado.txt
 predict.py
+model.pkl
+key.json
+deploy.py

@@ -1,0 +1,284 @@
+¡Perfecto! Ya tienes lo más importante: una cuenta activa y un proyecto (`platam-analytics`) con facturación habilitada. Gracias por la captura, eso me permite ser **100% específico**.
+
+Olvida las generalidades. Vamos a hacer esto **directamente desde tu Visual Studio Code (VS Code)**. Asumo que tienes tus archivos (`xgboost_model_final.pkl`, `scaler_final.pkl`, etc.) en una carpeta en tu Mac.
+
+Sigue esta guía paso a paso sin saltarte nada.
+
+---
+
+### PREPARACIÓN: Tu Entorno en VS Code
+
+1. Abre **Visual Studio Code**.
+2. Abre la carpeta donde tienes tus archivos (`File > Open Folder...`).
+3. Abre la **Terminal Integrada**: En el menú superior ve a `Terminal > New Terminal` (o presiona `Control` + `ñ` / `Control` + `~`).
+
+**⚠️ Nota Importante:** Todos los comandos que verás en los bloques negros a continuación ("bash") debes escribirlos (o copiarlos y pegarlos) en esa terminal de VS Code y dar **Enter**.
+
+---
+
+### PASO 1: Conectar tu Mac a Google Cloud
+
+Vamos a autenticar tu terminal para que tenga permiso de tocar el proyecto `platam-analytics`.
+
+1. **Instalar gcloud (si no lo tienes):**
+Si escribes `gcloud --version` y te sale error, necesitas instalarlo. Si ya lo tienes, salta al punto 2.
+*(Si necesitas instalarlo, descarga e instala el "Google Cloud CLI" para macOS desde la web de Google, reinicia VS Code y vuelve aquí).*
+2. **Login:**
+Escribe esto en la terminal. Se abrirá una ventana en tu navegador (Chrome/Safari). Inicia sesión con el correo que usas en GCP.
+```bash
+gcloud auth login
+
+```
+
+
+3. **Seleccionar tu proyecto:**
+Dile a la terminal que trabajaremos sobre el proyecto de la foto.
+```bash
+gcloud config set project platam-analytics
+
+```
+
+
+4. **Habilitar las herramientas (APIs):**
+Copia y pega este bloque entero en la terminal. Habilita Vertex AI y Storage.
+```bash
+gcloud services enable \
+  aiplatform.googleapis.com \
+  storage.googleapis.com \
+  artifactregistry.googleapis.com
+
+```
+
+
+
+---
+
+### PASO 2: Crear el Bucket y Subir el Modelo
+
+Vertex AI necesita leer el archivo desde la nube.
+
+1. **Crear el Bucket (Almacenamiento):**
+Vamos a crearlo en `us-central1` (Iowa) porque es más barato y estable.
+```bash
+gsutil mb -l us-central1 gs://platam-analytics-models
+
+```
+
+
+2. **Preparar y subir el modelo:**
+Vertex AI exige que el archivo se llame `model.pkl`. Vamos a renombrarlo y subirlo.
+```bash
+# 1. Renombrar tu archivo localmente (asegúrate de estar en la carpeta correcta)
+mv xgboost_model_final.pkl model.pkl
+
+# 2. Subirlo a la nube
+gsutil cp model.pkl gs://platam-analytics-models/v1/model.pkl
+
+```
+
+
+
+---
+
+### PASO 3: Crear Credenciales para Python
+
+Para que tu script de Python (que ejecutaremos después) pueda mandar órdenes a la nube, necesitamos una "llave".
+
+1. **Crear una cuenta de servicio:**
+```bash
+gcloud iam service-accounts create vertex-admin \
+    --display-name="Vertex Admin"
+
+```
+
+
+2. **Darle permisos de administrador:**
+```bash
+gcloud projects add-iam-policy-binding platam-analytics \
+    --member="serviceAccount:vertex-admin@platam-analytics.iam.gserviceaccount.com" \
+    --role="roles/owner"
+
+```
+
+
+3. **Descargar la llave a tu carpeta:**
+Esto creará un archivo `key.json` en tu carpeta actual de VS Code. **No compartas este archivo con nadie.**
+```bash
+gcloud iam service-accounts keys create key.json \
+    --iam-account=vertex-admin@platam-analytics.iam.gserviceaccount.com
+
+```
+
+
+
+---
+
+### PASO 4: El Script de Despliegue (Python)
+
+Ahora vamos a escribir el código.
+
+1. En VS Code, crea un nuevo archivo llamado `deploy.py`.
+2. Instala la librería necesaria en tu terminal:
+```bash
+pip install google-cloud-aiplatform
+
+```
+
+
+3. Copia y pega el siguiente código en `deploy.py`. He puesto los datos exactos de tu proyecto.
+
+```python
+from google.cloud import aiplatform
+import os
+
+# 1. Configuración de Autenticación
+# Esto le dice a Python dónde está tu llave
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
+
+# 2. Datos del Proyecto (Basado en tu screenshot)
+PROJECT_ID = "platam-analytics"
+REGION = "us-central1"
+BUCKET_URI = "gs://platam-analytics-models/v1" # Carpeta donde subimos el .pkl
+
+# Imagen oficial de XGBoost de Google. 
+# Usamos la versión 1.7 que es muy estable.
+IMAGE_URI = "us-docker.pkg.dev/vertex-ai/prediction/xgboost-cpu.1-7:latest"
+
+def main():
+    print("⏳ Conectando con Vertex AI...")
+    aiplatform.init(project=PROJECT_ID, location=REGION)
+
+    print("🚀 1. Subiendo el modelo al Registro de Vertex...")
+    model = aiplatform.Model.upload(
+        display_name="platam-riesgo-v1",
+        artifact_uri=BUCKET_URI,
+        serving_container_image_uri=IMAGE_URI
+    )
+    
+    print("✅ Modelo registrado con éxito.")
+    print("⏳ 2. Creando Endpoint (Esto tarda unos 5-10 minutos)...")
+    
+    endpoint = aiplatform.Endpoint.create(
+        display_name="endpoint-riesgo-credito"
+    )
+
+    print(f"✅ Endpoint creado: {endpoint.resource_name}")
+    print("⏳ 3. Desplegando modelo en una máquina (n1-standard-2)...")
+    
+    # Aquí definimos la máquina. n1-standard-2 cuesta aprox $0.09/hora
+    model.deploy(
+        endpoint=endpoint,
+        machine_type="n1-standard-2",
+        min_replica_count=1,
+        max_replica_count=1
+    )
+    
+    print("🎉 ¡LISTO! Tu modelo está online.")
+    print(f"ID del Endpoint para predicciones: {endpoint.name}")
+
+if __name__ == "__main__":
+    main()
+
+```
+
+4. **Ejecutar el script:**
+En tu terminal de VS Code:
+```bash
+python deploy.py
+
+```
+
+
+
+*Este paso tardará unos 10 a 15 minutos en total. Verás los mensajes en la terminal. No cierres VS Code.*
+
+---
+
+### PASO 5: Probar la Predicción
+
+Una vez que el script anterior termine y te diga "¡LISTO!", crea otro archivo llamado `predict.py` para probar que funciona.
+
+**Nota sobre el Scaler:** Como Vertex solo tiene el modelo XGBoost, **tú tienes que escalar los datos en tu código antes de enviarlos**.
+
+```python
+from google.cloud import aiplatform
+import pandas as pd
+import pickle
+import os
+
+# Autenticación
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
+
+# CONFIGURACIÓN
+PROJECT_ID = "platam-analytics"
+REGION = "us-central1"
+# IMPORTANTE: Copia aquí el ID numérico que te dio el script anterior al finalizar
+# Será un número largo, ej: "123456789012345"
+ENDPOINT_ID = "PON_AQUI_EL_ID_QUE_SALIO_EN_LA_TERMINAL"
+
+def predecir():
+    # 1. Cargar tu scaler local
+    print("Cargando scaler...")
+    with open('scaler_final.pkl', 'rb') as f:
+        scaler = pickle.load(f)
+
+    # 2. Datos de prueba (ejemplo)
+    # Deben estar en el MISMO ORDEN que usaste para entrenar
+    datos_cliente = {
+        'platam_score': 450, 
+        'experian_score_normalized': 0.5, 
+        'score_payment_performance': 0.8,
+        'score_payment_plan': 1, 
+        'score_deterioration': 0, 
+        'payment_count': 12,
+        'months_as_client': 24, 
+        'days_past_due_mean': 2.5, 
+        'days_past_due_max': 10,
+        'pct_early': 0.4, 
+        'pct_late': 0.1, 
+        'peso_platam_usado': 0.3,
+        'peso_hcpn_usado': 0.0, 
+        'tiene_plan_activo': 1, 
+        'tiene_plan_default': 0,
+        'tiene_plan_pendiente': 0, 
+        'num_planes': 2
+    }
+    
+    # Crear DataFrame
+    df = pd.DataFrame([datos_cliente])
+    
+    # 3. ESCALAR LOCALMENTE
+    datos_escalados = scaler.transform(df)
+    
+    # 4. Enviar a Vertex AI
+    aiplatform.init(project=PROJECT_ID, location=REGION)
+    endpoint = aiplatform.Endpoint(endpoint_name=ENDPOINT_ID)
+    
+    print("Enviando a Vertex AI...")
+    prediction = endpoint.predict(instances=datos_escalados.tolist())
+    
+    print("--- RESULTADO ---")
+    print(f"Predicción (Probabilidad de Default): {prediction.predictions[0]}")
+
+if __name__ == "__main__":
+    predecir()
+
+```
+
+Ejecútalo en la terminal:
+
+```bash
+python predict.py
+
+```
+
+---
+
+### Resumen de lo que acabamos de hacer
+
+1. Usamos `gcloud` en tu terminal para conectar tu Mac al proyecto `platam-analytics`.
+2. Creamos un bucket y subimos el modelo renombrado a `model.pkl`.
+3. Creamos una `key.json` para que Python tenga permiso.
+4. El script `deploy.py` subió el modelo a Vertex y creó un servidor (Endpoint).
+
+**¿Te funcionó el comando `python deploy.py` o te dio algún error en la terminal?** (Si te dio error, cópialo y pégalo aquí para decirte cómo arreglarlo).
