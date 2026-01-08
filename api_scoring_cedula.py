@@ -97,13 +97,13 @@ class MLPrediction(BaseModel):
     probability_default: float
     probability_no_default: float
     risk_level: str
-    ml_decision: str
+    attention_level: str  # Nivel de atención requerido
 
 class Recommendation(BaseModel):
-    final_decision: str
-    confidence: str
+    action_plan: str  # Plan de acción sugerido
+    priority: str  # Prioridad de atención
     reason: str
-    should_review_manually: bool
+    requires_follow_up: bool  # Requiere seguimiento
     flags: list
 
 class ClientInfo(BaseModel):
@@ -184,14 +184,16 @@ def calculate_risk_level(prob_default: float) -> str:
     else:
         return "Muy Alto"
 
-def get_ml_decision(prob_default: float) -> str:
-    """Decisión basada en ML"""
+def get_attention_level(prob_default: float) -> str:
+    """Determina el nivel de atención según probabilidad de default"""
     if prob_default >= 0.60:
-        return "RECHAZAR"
+        return "Alerta crítica"
     elif prob_default >= 0.40:
-        return "REVISAR"
+        return "Seguimiento cercano"
+    elif prob_default >= 0.20:
+        return "Atención moderada"
     else:
-        return "APROBAR"
+        return "Monitoreo normal"
 
 def categorize_hybrid_score(score: float) -> str:
     """Categoriza el score híbrido"""
@@ -207,11 +209,11 @@ def categorize_hybrid_score(score: float) -> str:
         return "Bajo"
 
 def generate_recommendation(client_data: dict, ml_data: dict) -> dict:
-    """Genera recomendación final combinando scoring + ML"""
+    """Genera recomendación de seguimiento y cobranza combinando scoring + ML"""
 
     hybrid_score = client_data['hybrid_score']
     prob_default = ml_data['probability_default']
-    ml_decision = ml_data['ml_decision']
+    attention_level = ml_data['attention_level']
 
     # Categorizar score
     if pd.isna(hybrid_score):
@@ -223,72 +225,80 @@ def generate_recommendation(client_data: dict, ml_data: dict) -> dict:
 
     # Analizar flags
     if prob_default >= 0.70:
-        flags.append(f"⚠️ Probabilidad de default muy alta ({prob_default*100:.0f}%)")
+        flags.append(f"🔴 Probabilidad de default muy alta ({prob_default*100:.0f}%)")
 
     if hybrid_score < 500:
         flags.append(f"⚠️ Score híbrido bajo ({hybrid_score:.0f})")
 
     days_past_due = client_data.get('days_past_due_mean', 0)
     if not pd.isna(days_past_due) and days_past_due > 15:
-        flags.append(f"⚠️ Mora promedio alta ({days_past_due:.0f} días)")
+        flags.append(f"⏰ Mora promedio alta ({days_past_due:.0f} días)")
 
     if client_data.get('tiene_plan_default', False):
-        flags.append("⚠️ Tiene planes de pago en default")
+        flags.append("❌ Tiene planes de pago en default")
 
     months_as_client = client_data.get('months_as_client', 0)
     if pd.isna(months_as_client) or months_as_client < 3:
-        flags.append("⚠️ Cliente muy nuevo (<3 meses)")
+        flags.append("🆕 Cliente muy nuevo (<3 meses)")
 
-    # DECISIÓN FINAL
+    # PLAN DE ACCIÓN SEGÚN RIESGO
     if prob_default >= 0.60:
-        # ML recomienda rechazar
+        # Alto riesgo de incumplimiento
         if hybrid_score >= 750 and prob_default < 0.70:
-            final_decision = "REVISAR MANUALMENTE"
-            confidence = "Media"
-            reason = f"Score híbrido excelente ({hybrid_score:.0f}) pero probabilidad de default moderada ({prob_default*100:.1f}%)"
-            should_review = True
+            action_plan = "Contacto preventivo - Verificar situación actual"
+            priority = "Alta"
+            reason = f"Score excelente ({hybrid_score:.0f}) pero riesgo elevado ({prob_default*100:.1f}%)"
+            requires_follow_up = True
         else:
-            final_decision = "RECHAZAR"
-            confidence = "Alta"
-            reason = f"Alta probabilidad de default ({prob_default*100:.1f}%) con score {hybrid_category.lower()}"
-            should_review = False
+            action_plan = "Cobranza inmediata - Restringir nuevos créditos"
+            priority = "Crítica"
+            reason = f"Alta probabilidad de incumplimiento ({prob_default*100:.1f}%) con score {hybrid_category.lower()}"
+            requires_follow_up = True
+
+    elif prob_default < 0.20:
+        # Bajo riesgo
+        if hybrid_score < 500:
+            action_plan = "Monitoreo rutinario - Revisar score bajo"
+            priority = "Baja"
+            reason = f"Riesgo bajo ({prob_default*100:.1f}%) pero score híbrido bajo ({hybrid_score:.0f})"
+            requires_follow_up = False
+        else:
+            action_plan = "Sin acción - Cliente confiable"
+            priority = "Ninguna"
+            reason = f"Riesgo muy bajo ({prob_default*100:.1f}%) y score {hybrid_category.lower()}"
+            requires_follow_up = False
 
     elif prob_default < 0.40:
-        # ML recomienda aprobar
-        if hybrid_score < 500:
-            final_decision = "REVISAR MANUALMENTE"
-            confidence = "Media"
-            reason = f"Baja probabilidad de default ({prob_default*100:.1f}%) pero score híbrido bajo ({hybrid_score:.0f})"
-            should_review = True
+        # Riesgo moderado-bajo
+        if hybrid_score >= 700:
+            action_plan = "Monitoreo rutinario - Buen desempeño"
+            priority = "Baja"
+            reason = f"Score alto ({hybrid_score:.0f}) y riesgo moderado ({prob_default*100:.1f}%)"
+            requires_follow_up = False
         else:
-            final_decision = "APROBAR"
-            confidence = "Alta"
-            reason = f"Baja probabilidad de default ({prob_default*100:.1f}%) y score {hybrid_category.lower()}"
-            should_review = False
+            action_plan = "Recordatorio preventivo - Seguimiento mensual"
+            priority = "Media"
+            reason = f"Riesgo moderado ({prob_default*100:.1f}%) con score {hybrid_category.lower()}"
+            requires_follow_up = True
 
     else:
-        # ML recomienda revisar (40-60%)
+        # Riesgo moderado-alto (40-60%)
         if hybrid_score >= 700:
-            final_decision = "APROBAR CON CONDICIONES"
-            confidence = "Media"
-            reason = f"Score híbrido bueno ({hybrid_score:.0f}) pero probabilidad de default moderada ({prob_default*100:.1f}%)"
-            should_review = True
-        elif hybrid_score >= 550:
-            final_decision = "REVISAR MANUALMENTE"
-            confidence = "Baja"
-            reason = f"Indicadores mixtos: score {hybrid_category.lower()} ({hybrid_score:.0f}) y probabilidad {prob_default*100:.1f}%"
-            should_review = True
+            action_plan = "Contacto preventivo - Evaluar refinanciación"
+            priority = "Media"
+            reason = f"Score bueno ({hybrid_score:.0f}) pero riesgo moderado-alto ({prob_default*100:.1f}%)"
+            requires_follow_up = True
         else:
-            final_decision = "RECHAZAR"
-            confidence = "Media"
-            reason = f"Score bajo ({hybrid_score:.0f}) y probabilidad de default moderada ({prob_default*100:.1f}%)"
-            should_review = False
+            action_plan = "Seguimiento cercano - Limitar exposición"
+            priority = "Alta"
+            reason = f"Indicadores mixtos: score {hybrid_category.lower()} y riesgo {prob_default*100:.1f}%"
+            requires_follow_up = True
 
     return {
-        'final_decision': final_decision,
-        'confidence': confidence,
+        'action_plan': action_plan,
+        'priority': priority,
         'reason': reason,
-        'should_review_manually': should_review,
+        'requires_follow_up': requires_follow_up,
         'flags': flags
     }
 
@@ -366,7 +376,7 @@ async def predict_by_cedula(request: ClientRequest):
             'probability_default': prob_default,
             'probability_no_default': prob_no_default,
             'risk_level': calculate_risk_level(prob_default),
-            'ml_decision': get_ml_decision(prob_default)
+            'attention_level': get_attention_level(prob_default)
         }
 
         # 4. Generar recomendación
