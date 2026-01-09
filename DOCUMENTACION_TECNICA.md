@@ -248,12 +248,23 @@ hybrid_score = (platam_score * peso_platam) +
 - `probability_default` (0-1): Probabilidad de incumplir
 - `probability_no_default` (0-1): Probabilidad de cumplir
 
+**⚠️ IMPORTANTE - Horizonte Temporal:**
+
+El modelo actual **NO tiene un horizonte temporal explícitamente definido**. La probabilidad de default debe interpretarse como un **indicador general de riesgo crediticio** basado en patrones históricos de comportamiento de pago.
+
+- **NO significa:** "Probabilidad de default en los próximos 12 meses"
+- **SÍ significa:** "Nivel de riesgo general basado en patrones de clientes similares"
+
+**Recomendación para próximo reentrenamiento:**
+Definir horizonte temporal explícito (sugerido: 12 meses, estándar para BNPL). Ejemplo: "Probabilidad de mora >90 días en los próximos 12 meses".
+
 ### Entrenamiento
 
 **Datos de entrenamiento:**
 - 1,835 clientes históricos
 - Features: 17 variables
 - Target: `default` (0 = cumplió, 1 = incumplió)
+- ⚠️ Horizonte temporal: NO documentado (requiere revisión)
 
 **Parámetros XGBoost:**
 ```python

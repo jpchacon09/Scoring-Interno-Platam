@@ -201,6 +201,8 @@ Combina **PLATAM Score** + **Experian Score** con ponderación dinámica:
 - `probability_default`: 0-100% (riesgo de incumplimiento)
 - Basado en 17 features de comportamiento
 
+⚠️ **Nota:** El modelo predice riesgo crediticio general sin horizonte temporal explícito (ej: no es "en los próximos 12 meses"). Ver [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md) para detalles.
+
 ### 4. Sistema de Recomendaciones
 
 Combina scoring + ML para generar:
