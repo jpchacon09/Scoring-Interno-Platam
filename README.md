@@ -1,10 +1,11 @@
-# 🚀 PLATAM - Sistema de Scoring Crediticio
+# 🚀 PLATAM - Sistema de Scoring Crediticio v2.2
 
-Sistema de scoring crediticio híbrido con Machine Learning para evaluación de riesgo de clientes PLATAM BNPL (Buy Now Pay Later).
+Sistema de scoring crediticio híbrido con Machine Learning y features demográficas para evaluación de riesgo de clientes PLATAM BNPL (Buy Now Pay Later).
 
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110-green.svg)](https://fastapi.tiangolo.com/)
 [![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Vertex%20AI-orange.svg)](https://cloud.google.com/vertex-ai)
+[![XGBoost](https://img.shields.io/badge/XGBoost-2.0.3-red.svg)](https://xgboost.readthedocs.io/)
 [![Status](https://img.shields.io/badge/Status-Production-success.svg)]()
 
 ---
@@ -12,10 +13,10 @@ Sistema de scoring crediticio híbrido con Machine Learning para evaluación de 
 ## 📋 Tabla de Contenidos
 
 - [¿Qué es este sistema?](#-qué-es-este-sistema)
-- [Estado Actual](#-estado-actual)
+- [Novedades v2.2](#-novedades-v22-enero-2026)
+- [Endpoints Disponibles](#-endpoints-disponibles)
 - [Inicio Rápido](#-inicio-rápido)
 - [Arquitectura](#-arquitectura)
-- [Cómo Funciona](#-cómo-funciona)
 - [Documentación](#-documentación)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 
@@ -27,473 +28,336 @@ Sistema de scoring crediticio híbrido con Machine Learning para evaluación de 
 
 ✅ **Calcula scores internos** basados en comportamiento de pago de clientes
 ✅ **Integra scores externos** (Experian/HCPN) con ponderación dinámica
-✅ **Predice riesgo de default** usando Machine Learning (XGBoost)
+✅ **Usa datos demográficos** (edad, ciudad, créditos en mora, cuota mensual)
+✅ **Predice riesgo de default** usando XGBoost sin data leakage
 ✅ **Genera recomendaciones** de seguimiento y cobranza
-✅ **API en producción** accesible 24/7 en Google Cloud Run
+✅ **API en producción** 24/7 en Google Cloud Run
 
 ### Caso de Uso
 
 ```
-Input:  Cédula del cliente (ej: "1006157869")
+Input:  Cédula del cliente (ej: "1192925596")
         ↓
 Output: Evaluación completa 360°
-        • Score híbrido: 687 (Bueno)
-        • Probabilidad default: 39.2%
-        • Nivel de atención: Atención moderada
-        • Plan de acción: Recordatorio preventivo
+        • Score híbrido: 479 (Regular)
+        • Probabilidad default: 19.0% (v2.2) vs 52.1% (v1.0)
+        • Nivel de riesgo: Bajo
+        • Ciudad: Barranquilla
+        • Créditos en mora: 1 de 7
+        • Plan de acción: Monitoreo normal
 ```
 
 ---
 
-## 🌟 Estado Actual
+## 🌟 Novedades v2.2 (Enero 2026)
 
-### ✅ Sistema en Producción (Enero 2026)
+### ✅ Modelo con Features Demográficas
 
-| Componente | Estado | Descripción |
-|------------|--------|-------------|
-| **API Cloud Run** | 🟢 Live | https://scoring-api-...run.app |
-| **Modelo ML (Vertex AI)** | 🟢 Deployed | XGBoost - platam-custom-final |
-| **Datos** | 🟢 Loaded | 1,835 clientes activos |
-| **Scoring Híbrido** | 🟢 Active | PLATAM + Experian |
-| **Monitoreo** | 🟢 Scheduled | Trimestral |
+**Nuevo modelo desplegado en Vertex AI con:**
+- 🔢 **22 features** (15 originales + 7 demográficas confiables)
+- 🐍 **Python 3.11** + **XGBoost 2.0.3** (custom container)
+- 🎯 **AUC: 0.760** (sin data leakage)
+- 🏙️ **Datos demográficos:** edad, ciudad, créditos en mora, cuota mensual
+- ❌ **Sin features de ingresos** (decisión de negocio por economía informal)
 
-### Métricas del Sistema
+### 🔍 Features Agregadas
 
-- **Clientes:** 1,835 con scoring completo
-- **Latencia API:** ~500ms promedio
-- **Uptime:** 99.9% (Cloud Run)
-- **Precisión ML:** Monitoreada trimestralmente
-- **Costo mensual:** ~$70 (Vertex AI)
+| Feature | Descripción | Importancia |
+|---------|-------------|-------------|
+| `cuota_mensual` | Cuota mensual real de HCPN | 7.5% |
+| `ciudad_encoded` | Ciudad del cliente (geolocalización) | 6.1% |
+| `creditos_mora` | Número de créditos en mora | 6.0% |
+| `edad` | Edad del cliente | 5.6% |
+| `creditos_vigentes` | Total créditos vigentes | 3.2% |
+| `hist_neg_12m` | Historial negativo últimos 12m | 2.8% |
+| `genero_encoded` | Género (sin data actualmente) | 0.1% |
+
+### 🚫 Features Removidas
+
+- ❌ `days_past_due_mean` - **Data leakage corregido**
+- ❌ `days_past_due_max` - **Data leakage corregido**
+- ❌ `ingresos_smlv` - No confiable (economía informal)
+- ❌ `nivel_ingresos_encoded` - Deriva de ingresos
+- ❌ `ratio_cuota_ingreso` - Depende de ingresos sesgados
+
+### 💡 Insights de Negocio Descubiertos
+
+- 🔴 **Manizales:** 48.8% tasa de default (vs 5.4% promedio)
+- 🟡 **642 clientes** con ratio cuota/ingreso >45% (alto riesgo)
+- 🟢 **Barranquilla/Bucaramanga:** <5% default rate
+- 💰 **Ahorro potencial:** $142M/año con políticas basadas en insights
+
+---
+
+## 🌐 Endpoints Disponibles
+
+### 1️⃣ Endpoint v1.0 (Producción Actual) ✅
+
+**Endpoint ID:** `1160748927884984320`
+**Estado:** ✅ Funcionando en producción
+**Features:** 17 (sin demografía)
+**Python:** 3.7
+
+**Usado por:**
+- API actual en Cloud Run
+- Integraciones n8n/Make
+
+### 2️⃣ Endpoint v2.2 (Nuevo - Listo para Usar) ✅
+
+**Endpoint ID:** `7891061911641391104`
+**Estado:** ✅ Desplegado y funcionando
+**Features:** 22 (con demografía)
+**Python:** 3.11 + XGBoost 2.0.3
+**Container:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
+
+**Ventajas:**
+- Sin data leakage
+- Datos demográficos
+- Predicciones más precisas
+- Modelo más robusto
+
+### 🔄 Compatibilidad
+
+**Tu API actual (v1.0) sigue funcionando perfectamente.**
+
+**Para migrar a v2.2:**
+- ✅ Mismo endpoint HTTP (sin breaking changes)
+- ✅ Mismo input JSON
+- ✅ Mismo output JSON
+- ✅ Solo mejores predicciones
 
 ---
 
 ## 🚀 Inicio Rápido
 
-### Para Desarrolladores
-
-#### 1. Consultar la API
+### Prerequisitos
 
 ```bash
-curl -X POST "https://scoring-api-741488896424.us-central1.run.app/predict" \
-  -H "Content-Type: application/json" \
-  -d '{"cedula":"1006157869"}'
+python >= 3.11
+gcloud CLI configurado
+Credenciales de GCP (key.json)
 ```
 
-#### 2. Integración con n8n
+### 1. Probar Endpoint v2.2
 
-```javascript
-// HTTP Request Node
-{
-  method: "POST",
-  url: "https://scoring-api-741488896424.us-central1.run.app/predict",
-  body: {
-    cedula: "{{ $json.cedula }}"
-  }
-}
+```bash
+# Probar con script de prueba
+python test_vertex_endpoint.py
+
+# O probar con cédula específica
+python comparar_modelos.py  # Compara v1.0 vs v2.2
 ```
 
-#### 3. Python SDK
+**Output esperado:**
+```
+✅ PREDICCIÓN EXITOSA
+📊 Resultados:
+   • Probabilidad NO Default: 0.810 (81.0%)
+   • Probabilidad Default:    0.190 (19.0%)
+   • Nivel de Riesgo:         Bajo
+```
+
+### 2. Desplegar Custom Container (si modificas el modelo)
+
+```bash
+cd vertex_custom_py311/
+
+# Build container
+gcloud builds submit --tag gcr.io/platam-analytics/platam-scoring-py311:v2.2
+
+# Registrar en Vertex AI
+gcloud ai models upload \
+  --region=us-central1 \
+  --display-name=platam-scoring-py311 \
+  --container-image-uri=gcr.io/platam-analytics/platam-scoring-py311:v2.2 \
+  --container-health-route=/health \
+  --container-predict-route=/predict \
+  --container-ports=8080
+```
+
+### 3. Migrar API a v2.2 (Opcional)
 
 ```python
-import requests
+# En api_scoring_cedula.py, línea 30:
+ENDPOINT_ID = "7891061911641391104"  # Cambiar a v2.2
 
-response = requests.post(
-    "https://scoring-api-741488896424.us-central1.run.app/predict",
-    json={"cedula": "1006157869"}
-)
-
-result = response.json()
-print(f"Score híbrido: {result['scoring']['hybrid_score']}")
-print(f"Riesgo default: {result['ml_prediction']['probability_default']:.1%}")
-print(f"Acción sugerida: {result['recommendation']['action_plan']}")
+# Redesplegar
+gcloud run deploy scoring-api \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated
 ```
-
-### Para Administradores
-
-#### Monitoreo Trimestral
-
-```bash
-cd "/Users/jpchacon/Scoring Interno"
-python check_model_drift.py
-```
-
-Ver: [`GUIA_MANTENIMIENTO.md`](GUIA_MANTENIMIENTO.md) para más detalles.
 
 ---
 
 ## 🏗️ Arquitectura
 
 ```
-┌────────────────────────────────────────────────────────┐
-│                    FRONTEND                            │
-│              n8n Workflows / API Clients               │
-└──────────────────┬─────────────────────────────────────┘
-                   │
-                   │ HTTPS POST /predict
-                   ↓
-┌────────────────────────────────────────────────────────┐
-│               CLOUD RUN API (FastAPI)                  │
-│  • api_scoring_cedula.py                               │
-│  • Data: CSV en memoria (1,835 clientes)              │
-│  • Región: us-central1                                 │
-└──────────────────┬─────────────────────────────────────┘
-                   │
-                   │ 17 features
-                   ↓
-┌────────────────────────────────────────────────────────┐
-│            VERTEX AI (Google Cloud)                    │
-│  • Modelo: XGBoost (platam-custom-final)              │
-│  • Endpoint: 3426032820691755008                       │
-│  • Predice: Probabilidad de default                   │
-└────────────────────────────────────────────────────────┘
+┌─────────────────┐
+│   n8n / Make    │  ← Integraciones
+└────────┬────────┘
+         │ POST /predict
+         │ {"cedula": "..."}
+         ▼
+┌─────────────────┐
+│  Cloud Run API  │  ← FastAPI en producción
+└────────┬────────┘
+         │
+         ├─────────────────────┐
+         │                     │
+         ▼                     ▼
+┌────────────────┐    ┌────────────────┐
+│ Vertex AI v1.0 │    │ Vertex AI v2.2 │  ← ML Models
+│ 17 features    │    │ 22 features    │
+│ Python 3.7     │    │ Python 3.11    │
+└────────────────┘    └────────────────┘
+         │                     │
+         │                     │
+         ▼                     ▼
+┌──────────────────────────────────────┐
+│   SCORES_V2_ANALISIS_COMPLETO.csv    │  ← Datos (39 columnas)
+│   1,870 clientes × 39 features       │
+└──────────────────────────────────────┘
 ```
-
-### Stack Tecnológico
-
-**Backend:**
-- Python 3.11
-- FastAPI (REST API)
-- Pandas (procesamiento de datos)
-- XGBoost (Machine Learning)
-
-**Cloud:**
-- Google Cloud Run (API hosting)
-- Google Vertex AI (ML deployment)
-- Docker (containerización)
-
-**Data:**
-- CSV (1,835 clientes)
-- 17 features por cliente
-- Scores precalculados
-
----
-
-## 💡 Cómo Funciona
-
-### 1. Sistema de Scoring PLATAM (Interno)
-
-Calcula score **0-900** basado en:
-
-- **Payment Performance (60%):** Puntualidad de pagos, mora promedio
-- **Payment Plan (15%):** Planes de pago activos/default
-- **Deterioration (25%):** Velocidad de deterioro del comportamiento
-
-### 2. Sistema Híbrido Inteligente
-
-Combina **PLATAM Score** + **Experian Score** con ponderación dinámica:
-
-| Antigüedad | Peso PLATAM | Peso Experian |
-|------------|-------------|---------------|
-| < 3 meses | 20% | 80% |
-| 3-6 meses | 40% | 60% |
-| 6-12 meses | 50% | 50% |
-| 12-24 meses | 60% | 40% |
-| > 24 meses | 70% | 30% |
-
-**¿Por qué dinámico?**
-- Clientes nuevos: Confía más en historial externo (Experian)
-- Clientes maduros: Confía más en comportamiento interno (PLATAM)
-
-### 3. Modelo de Machine Learning
-
-**XGBoost** entrenado con 1,835 clientes históricos predice:
-
-- `probability_default`: 0-100% (riesgo de incumplimiento)
-- Basado en 17 features de comportamiento
-
-⚠️ **Nota:** El modelo predice riesgo crediticio general sin horizonte temporal explícito (ej: no es "en los próximos 12 meses"). Ver [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md) para detalles.
-
-### 4. Sistema de Recomendaciones
-
-Combina scoring + ML para generar:
-
-- **Nivel de atención:** Monitoreo normal → Alerta crítica
-- **Plan de acción:** Desde "Sin acción" hasta "Cobranza inmediata"
-- **Prioridad:** Ninguna → Crítica
-- **Flags:** Alertas específicas del cliente
-
-### 5. Proceso de Scores Empresariales
-
-Para clientes empresariales (NIT), el sistema:
-
-1. **Obtiene datos Experian:** PDFs empresariales → Extracción automática de scores
-2. **Normaliza scores:** Escala 0-950 → 0-1000 (comparable con personas naturales)
-3. **Calcula híbrido:** Mismo algoritmo con ponderación ajustada
-4. **Genera predicción:** Modelo ML entrenado incluye empresas
-
-**Resultado:** Scoring unificado para personas naturales y jurídicas.
 
 ---
 
 ## 📚 Documentación
 
-### Guías Principales
+### Documentos Principales
 
 | Documento | Descripción |
 |-----------|-------------|
-| **[API_CLOUD_RUN.md](API_CLOUD_RUN.md)** | Documentación completa de la API en producción |
-| **[DOCUMENTACION_TECNICA.md](DOCUMENTACION_TECNICA.md)** | Arquitectura, algoritmos y detalles técnicos |
-| **[GUIA_MANTENIMIENTO.md](GUIA_MANTENIMIENTO.md)** | Mantenimiento y monitoreo del sistema |
-| **[VERTEX_AI_GUIA.md](VERTEX_AI_GUIA.md)** | Uso y gestión de Vertex AI |
+| **[ESTADO_FINAL_DEPLOYMENT.md](ESTADO_FINAL_DEPLOYMENT.md)** | 📖 **Lee este primero** - Estado completo, cómo probar, cómo migrar |
+| **[INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md](INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md)** | 💡 Análisis de negocio y políticas recomendadas |
+| **[DOCUMENTACION_TECNICA.md](DOCUMENTACION_TECNICA.md)** | 🔧 Detalles técnicos del sistema |
 
-### Recursos Adicionales
+### Scripts Útiles
 
-- **[future_implementation/](future_implementation/)** - Sistema de actualización automática (MySQL)
-- **[docs/archive/](docs/archive/)** - Documentos históricos del proyecto
-
-### API Docs Interactiva
-
-Swagger UI: https://scoring-api-741488896424.us-central1.run.app/docs
+| Script | Uso |
+|--------|-----|
+| `test_vertex_endpoint.py` | Probar endpoint v2.2 |
+| `comparar_modelos.py` | Comparar v1.0 vs v2.2 con cédula real |
+| `add_demographics_to_scores_v2.py` | Agregar demografía a CSV (ya ejecutado) |
 
 ---
 
 ## 📁 Estructura del Proyecto
 
 ```
-.
-├── api_scoring_cedula.py              # API principal (Cloud Run)
-├── check_model_drift.py               # Monitoreo trimestral del modelo
-├── data/
-│   └── processed/
-│       └── hybrid_scores.csv          # Datos de clientes (1,835)
-├── future_implementation/             # Sistema de actualización automática
-│   ├── README.md
-│   └── ACTUALIZACION_AUTOMATICA.md
-├── docs/
-│   └── archive/                       # Documentos históricos
-├── config/
-│   └── key.json                       # Credenciales GCP
-├── README.md                          # Este archivo
-├── API_CLOUD_RUN.md                   # Docs API
-├── DOCUMENTACION_TECNICA.md           # Docs técnicas
-├── GUIA_MANTENIMIENTO.md              # Mantenimiento
-└── VERTEX_AI_GUIA.md                  # Vertex AI
-```
-
-### Archivos Clave en Producción
-
-**API:**
-- `api_scoring_cedula.py` - FastAPI application
-- `Dockerfile` - Container configuration
-- `requirements-api.txt` - Python dependencies
-
-**Data:**
-- `data/processed/hybrid_scores.csv` - 1,835 clientes con scores
-
-**Monitoreo:**
-- `check_model_drift.py` - Health check trimestral
-
-**Deployment:**
-- `.gcloudignore` - Exclude files from deployment
-- `config/key.json` - GCP credentials
-
----
-
-## 🔧 Desarrollo Local
-
-### Prerrequisitos
-
-```bash
-Python 3.11+
-pandas
-fastapi
-uvicorn
-google-cloud-aiplatform
-```
-
-### Ejecutar API Localmente
-
-```bash
-# 1. Instalar dependencias
-pip install -r requirements-api.txt
-
-# 2. Configurar credenciales GCP
-export GOOGLE_APPLICATION_CREDENTIALS="config/key.json"
-
-# 3. Ejecutar API
-python api_scoring_cedula.py
-
-# 4. Probar
-curl -X POST "http://localhost:8000/predict" \
-  -H "Content-Type: application/json" \
-  -d '{"cedula":"1006157869"}'
-```
-
-### Testing
-
-```bash
-# Health check
-curl http://localhost:8000/health
-
-# Stats
-curl http://localhost:8000/stats
-
-# Docs
-open http://localhost:8000/docs
+Scoring Interno/
+│
+├── 📊 Datos
+│   ├── SCORES_V2_ANALISIS_COMPLETO.csv    # Datos con 39 columnas
+│   └── data/analytics/                     # Segmentaciones y dashboards
+│
+├── 🤖 Modelos
+│   ├── models/vertex_ai_final/             # Modelo v2.2 desplegado
+│   │   ├── model.pkl                       # XGBoost 2.0.3
+│   │   ├── scaler.pkl                      # StandardScaler
+│   │   ├── feature_names.json              # 22 features
+│   │   ├── model_metadata.json             # Metadatos
+│   │   └── deployment_info.json            # Info de deployment
+│   │
+│   └── vertex_custom_py311/                # Custom container ⭐
+│       ├── Dockerfile                      # Python 3.11 container
+│       ├── predictor.py                    # Flask API
+│       ├── model.pkl                       # Modelo embebido
+│       ├── scaler.pkl
+│       └── feature_names.json
+│
+├── 🌐 API
+│   ├── api_scoring_cedula.py               # API principal (FastAPI)
+│   └── Dockerfile                          # Container para Cloud Run
+│
+├── 🧪 Scripts de Prueba
+│   ├── test_vertex_endpoint.py             # Probar endpoint
+│   └── comparar_modelos.py                 # Comparar v1.0 vs v2.2
+│
+├── 📖 Documentación
+│   ├── README.md                           # Este archivo
+│   ├── ESTADO_FINAL_DEPLOYMENT.md          # Doc principal ⭐
+│   ├── INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md  # Análisis de negocio
+│   └── DOCUMENTACION_TECNICA.md            # Detalles técnicos
+│
+└── 🔑 Configuración
+    └── key.json                            # Credenciales GCP (no en git)
 ```
 
 ---
 
-## 🔄 Actualizaciones y Mantenimiento
+## 🎯 Próximos Pasos
 
-### Actualizar Datos
+### Si quieres migrar a v2.2:
 
-**Frecuencia:** Manual (cuando sea necesario)
+1. **Probar endpoint nuevo**
+   ```bash
+   python test_vertex_endpoint.py
+   python comparar_modelos.py
+   ```
 
-```bash
-# 1. Actualizar CSV
-# Reemplazar: data/processed/hybrid_scores.csv
+2. **Validar predicciones**
+   - Comparar con v1.0
+   - Verificar que diferencias tengan sentido
 
-# 2. Rebuild Docker
-gcloud builds submit --tag gcr.io/platam-analytics/scoring-api:latest
+3. **Actualizar API** (solo 1 línea)
+   ```python
+   ENDPOINT_ID = "7891061911641391104"
+   ```
 
-# 3. Redesplegar
-gcloud run deploy scoring-api \
-  --image gcr.io/platam-analytics/scoring-api:latest \
-  --region us-central1
-```
+4. **Redesplegar a Cloud Run**
+   ```bash
+   gcloud run deploy scoring-api --source .
+   ```
 
-Ver [`GUIA_MANTENIMIENTO.md`](GUIA_MANTENIMIENTO.md) para detalles.
+5. **Monitorear 24-48h**
 
-### Monitoreo del Modelo
-
-**Frecuencia:** Trimestral (cada 3 meses)
-
-```bash
-python check_model_drift.py
-```
-
-**Próxima ejecución:** Abril 2026
-
-### Reentrenar Modelo
-
-**Cuándo:**
-- Cada 6+ meses
-- Si data drift > 20%
-- Si precisión baja significativamente
-
-Ver [`GUIA_MANTENIMIENTO.md`](GUIA_MANTENIMIENTO.md) para proceso completo.
+6. **Apagar v1.0** (ahorrar ~$50/mes)
 
 ---
 
-## 🌐 URLs de Producción
+## 💰 Costos
 
-### API
-- **Base:** https://scoring-api-741488896424.us-central1.run.app
-- **Docs:** https://scoring-api-741488896424.us-central1.run.app/docs
-- **Health:** https://scoring-api-741488896424.us-central1.run.app/health
-- **Stats:** https://scoring-api-741488896424.us-central1.run.app/stats
+| Servicio | v1.0 | v2.2 | Total Actual |
+|----------|------|------|--------------|
+| Vertex AI Endpoint | $40-60/mes | $50-80/mes | $100-140/mes |
+| Cloud Run API | $20-30/mes | - | $20-30/mes |
+| **Total** | - | - | **~$130/mes** |
 
-### Google Cloud Console
-- **Cloud Run:** [scoring-api](https://console.cloud.google.com/run/detail/us-central1/scoring-api?project=platam-analytics)
-- **Vertex AI:** [Endpoint 3426032820691755008](https://console.cloud.google.com/vertex-ai/endpoints/3426032820691755008?project=platam-analytics)
+**Después de migrar (solo v2.2):** ~$70-110/mes
 
 ---
 
-## 📊 Métricas y Performance
+## 📞 Soporte
 
-### API Performance
-- **Latencia:** ~500ms promedio
-- **Cold start:** ~2-3s (primera request)
-- **Throughput:** Hasta 1000 requests simultáneos
-- **Disponibilidad:** 99.9% (Cloud Run SLA)
+**Proyecto:** platam-analytics
+**Región:** us-central1
+**Modelo v1.0:** Endpoint `1160748927884984320` ✅
+**Modelo v2.2:** Endpoint `7891061911641391104` ✅
 
-### Modelo ML
-- **Clientes evaluados:** 1,835
-- **Features por cliente:** 17
-- **Score híbrido promedio:** 687.3
-- **Rango de scores:** 300-950
-
-### Costos
-- **Cloud Run:** $0/mes (free tier)
-- **Vertex AI:** ~$70/mes (n1-standard-2 24/7)
-- **Cloud Storage:** ~$0.02/mes
-- **Total:** ~$70/mes
+**Container v2.2:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
 
 ---
 
-## 🎓 Para Aprender Más
+## 📊 Changelog
 
-### Algoritmos
+### v2.2 (Enero 2026) - Demografía sin Data Leakage
 
-**Scoring PLATAM:**
-- Ver sección "Algoritmo de Scoring" en [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md)
+✅ Agregadas 7 features demográficas confiables
+✅ Removido data leakage (days_past_due)
+✅ Removidas features de ingresos (no confiables)
+✅ Custom container Python 3.11 + XGBoost 2.0.3
+✅ AUC: 0.760 (sin trampa)
+✅ Insights de negocio: Manizales 48.8% default
 
-**Sistema Híbrido:**
-- Ver sección "Sistema Híbrido" en [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md)
+### v1.0 (Diciembre 2025) - Sistema Base
 
-**Machine Learning:**
-- Ver sección "Modelo ML" en [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md)
-
-### Arquitectura
-
-- Ver [`DOCUMENTACION_TECNICA.md`](DOCUMENTACION_TECNICA.md) - Arquitectura completa
-- Ver [`API_CLOUD_RUN.md`](API_CLOUD_RUN.md) - Detalles de deployment
-
----
-
-## 🤝 Contribuir
-
-### Workflow de Desarrollo
-
-1. Crear feature branch
-2. Desarrollar y probar localmente
-3. Commit con mensajes descriptivos
-4. Push y crear Pull Request
-5. Review y merge a main
-
-### Commits
-
-```bash
-git commit -m "tipo: descripción breve
-
-Detalles adicionales si necesario.
-
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
-```
-
-**Tipos de commit:**
-- `feat:` - Nueva funcionalidad
-- `fix:` - Bug fix
-- `docs:` - Documentación
-- `refactor:` - Refactorización
-- `test:` - Tests
-- `chore:` - Mantenimiento
+✅ Score híbrido PLATAM + Experian
+✅ Modelo ML con 17 features
+✅ API en Cloud Run
+✅ Integración n8n/Make
 
 ---
 
-## 📞 Contacto y Soporte
+**🎉 Sistema listo para producción - Dos endpoints funcionando simultáneamente**
 
-**Proyecto:** PLATAM - Sistema de Scoring Interno
-
-**Cloud Project:** platam-analytics
-
-**Repositorio:** https://github.com/jpchacon09/Scoring-Interno-Platam
-
----
-
-## 📜 Historial de Versiones
-
-### v2.0 - Enero 2026 (Actual)
-- ✅ API en producción (Cloud Run)
-- ✅ Modelo ML desplegado (Vertex AI)
-- ✅ Sistema híbrido implementado
-- ✅ Monitoreo trimestral
-- ✅ Scoring empresarial integrado
-
-### v1.0 - Diciembre 2025
-- Scoring PLATAM V2.0
-- Sistema híbrido con Experian
-- Análisis y visualizaciones
-
----
-
-**Última actualización:** Enero 2026
-**Versión:** 2.0
-**Estado:** 🟢 Producción
-
----
-
-**🚀 Sistema listo para uso en producción**

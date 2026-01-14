@@ -17,8 +17,8 @@ from datetime import datetime
 
 app = FastAPI(
     title="PLATAM Scoring API - Por Cédula",
-    description="Scoring completo: Busca por cédula/NIT y retorna evaluación 360°",
-    version="1.0"
+    description="Scoring completo v2.2: Busca por cédula/NIT y retorna evaluación 360° con demografía",
+    version="2.2"
 )
 
 # ================== CONFIGURACIÓN ==================
@@ -27,10 +27,10 @@ app = FastAPI(
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "key.json"
 PROJECT_ID = "platam-analytics"
 REGION = "us-central1"
-ENDPOINT_ID = "1160748927884984320"
+ENDPOINT_ID = "7891061911641391104"  # NUEVO: Modelo v2.2 con demografía (sin income features)
 
 # Ruta al CSV con datos
-CSV_PATH = "data/processed/hybrid_scores.csv"
+CSV_PATH = "SCORES_V2_ANALISIS_COMPLETO.csv"  # NUEVO: Archivo con 39 columnas (28 originales + 11 demográficas)
 
 # ================== DATOS EN MEMORIA ==================
 
@@ -138,29 +138,51 @@ def get_client_by_cedula(cedula: str) -> Optional[dict]:
     return cliente.iloc[0].to_dict()
 
 def get_ml_prediction(client_data: dict) -> tuple:
-    """Obtiene predicción del modelo ML en Vertex AI"""
+    """
+    Obtiene predicción del modelo ML en Vertex AI
 
-    # Features en el orden correcto para el modelo
+    MODELO v2.2: 22 features (15 originales + 7 demográficas confiables)
+    - REMOVIDO: days_past_due_mean, days_past_due_max (causaban data leakage)
+    - REMOVIDO: ingresos_smlv, nivel_ingresos_encoded, ratio_cuota_ingreso (no confiables)
+    - AGREGADO: genero_encoded, edad, ciudad_encoded, cuota_mensual,
+                creditos_vigentes, creditos_mora, hist_neg_12m
+    """
+
+    # Features en el orden correcto para el modelo v2.2 (22 features)
     feature_order = [
+        # 15 features originales (sin days_past_due)
         'platam_score', 'experian_score_normalized',
         'score_payment_performance', 'score_payment_plan', 'score_deterioration',
         'payment_count', 'months_as_client',
-        'days_past_due_mean', 'days_past_due_max',
         'pct_early', 'pct_late',
         'peso_platam_usado', 'peso_hcpn_usado',
-        'tiene_plan_activo', 'tiene_plan_default', 'tiene_plan_pendiente', 'num_planes'
+        'tiene_plan_activo', 'tiene_plan_default', 'tiene_plan_pendiente', 'num_planes',
+
+        # 7 features demográficas CONFIABLES (sin income features)
+        'genero_encoded', 'edad', 'ciudad_encoded',
+        'cuota_mensual', 'creditos_vigentes', 'creditos_mora', 'hist_neg_12m'
     ]
 
-    # Preparar instancia (manejar NaN)
+    # Preparar instancia (manejar NaN y defaults)
     instance = []
     for feature in feature_order:
         value = client_data.get(feature, 0)
-        # Reemplazar NaN con 0
-        if pd.isna(value):
-            value = 0
+
+        # Defaults especiales para features demográficas
+        if pd.isna(value) or value is None:
+            if feature == 'edad':
+                value = 35  # Default edad promedio
+            elif feature == 'genero_encoded':
+                value = 0
+            elif feature == 'ciudad_encoded':
+                value = 0
+            else:
+                value = 0
+
         # Convertir booleanos a enteros
         if isinstance(value, bool):
             value = int(value)
+
         instance.append(float(value))
 
     # Llamar a Vertex AI
@@ -230,9 +252,10 @@ def generate_recommendation(client_data: dict, ml_data: dict) -> dict:
     if hybrid_score < 500:
         flags.append(f"⚠️ Score híbrido bajo ({hybrid_score:.0f})")
 
-    days_past_due = client_data.get('days_past_due_mean', 0)
-    if not pd.isna(days_past_due) and days_past_due > 15:
-        flags.append(f"⏰ Mora promedio alta ({days_past_due:.0f} días)")
+    # Revisar créditos en mora (nueva feature demográfica)
+    creditos_mora = client_data.get('creditos_mora', 0)
+    if not pd.isna(creditos_mora) and creditos_mora > 0:
+        flags.append(f"⏰ Créditos en mora: {int(creditos_mora)}")
 
     if client_data.get('tiene_plan_default', False):
         flags.append("❌ Tiene planes de pago en default")
@@ -325,7 +348,8 @@ def health():
         "status": "healthy",
         "data_loaded": df_clientes is not None,
         "vertex_ai": "connected" if endpoint else "disconnected",
-        "model": "platam-custom-final",
+        "model": "platam-scoring-v2.2-demographics-no-income",
+        "model_features": 22,
         "clientes": len(df_clientes) if df_clientes is not None else 0
     }
 

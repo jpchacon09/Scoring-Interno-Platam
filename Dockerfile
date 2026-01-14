@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements-api.txt
 # Copiar código y datos
 COPY api_scoring_cedula.py .
 COPY key.json .
-COPY data/processed/hybrid_scores.csv data/processed/hybrid_scores.csv
+COPY SCORES_V2_ANALISIS_COMPLETO.csv .
 
 # Exponer puerto
 EXPOSE 8080

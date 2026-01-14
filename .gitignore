@@ -11,6 +11,11 @@ data/raw/**/*.csv
 data/hcpn/*.json
 data/processed/**/*.csv
 data/processed/*.csv
+data/analytics/
+backups/
+
+# CSV principal (datos sensibles de clientes)
+SCORES_V2_ANALISIS_COMPLETO.csv
 
 # Python
 __pycache__/
