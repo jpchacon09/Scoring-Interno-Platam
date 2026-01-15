@@ -1,63 +1,75 @@
-# ✅ Estado Final - Deployment Completado
+# ✅ Estado del Sistema - Optimizado y en Producción
 
-**Fecha:** 13 de Enero 2026
-**Status:** Ambos endpoints funcionando correctamente
-
----
-
-## 📊 Endpoints Disponibles
-
-### 1️⃣ Endpoint ANTERIOR (v1.0) - EN PRODUCCIÓN ✅
-
-**Endpoint ID:** `1160748927884984320`
-**Modelo ID:** `70182926712569856`
-**Estado:** ✅ **FUNCIONANDO** (en producción)
-
-**Características:**
-- Modelo original (17 features)
-- Python 3.7 + XGBoost viejo
-- Usado actualmente por tu API
-- n8n/Make conectados a este
-- **NO modificado - 100% estable**
-
-**URL API actual:** La que usas en n8n/Make
-**Endpoint interno:** No necesitas conocerlo (la API lo maneja)
+**Fecha:** 15 de Enero 2026
+**Status:** Sistema optimizado - Solo endpoint v2.2 en producción
+**Ahorro:** ~$40-60/mes vs configuración anterior
 
 ---
 
-### 2️⃣ Endpoint NUEVO (v2.2) - LISTO PARA PROBAR ✅
+## 🎯 Sistema Actual (v2.2.1)
+
+### ✅ Endpoint en Producción
 
 **Endpoint ID:** `7891061911641391104`
-**Modelo ID:** `8594054462069276672`
-**Deployed Model ID:** `6217642047805849600`
-**Estado:** ✅ **FUNCIONANDO** (disponible para pruebas)
+**Modelo ID:** `8594054462069276672` (platam-scoring-py311-custom)
+**Estado:** ✅ **PRODUCCIÓN** (desde enero 13, 2026)
+
+**URL API:** `https://scoring-api-741488896424.us-central1.run.app/predict`
 
 **Características:**
-- **22 features** (15 originales + 7 demográficas confiables)
+- **22 features** (15 originales + 7 demográficas)
 - **Custom Container:** Python 3.11 + XGBoost 2.0.3
-- **AUC: 0.760** (mejor que v1.0)
-- **Sin features de ingresos** (decisión de negocio)
-- Probado y verificado ✅
+- **AUC: 0.760** (sin data leakage)
+- **Sin features de ingresos** (decisión de negocio por economía informal)
+- Probado y validado ✅
 
-**Nuevas features incluidas:**
-1. `genero_encoded`
-2. `edad`
-3. `ciudad_encoded`
-4. `cuota_mensual` ⭐
-5. `creditos_vigentes` ⭐
-6. `creditos_mora` ⭐
-7. `hist_neg_12m` ⭐
+**Features demográficas incluidas:**
+1. `genero_encoded` - Género del cliente
+2. `edad` - Edad del cliente (importancia: 5.6%)
+3. `ciudad_encoded` - Ciudad del cliente (importancia: 6.1%)
+4. `cuota_mensual` - Cuota mensual real HCPN (importancia: 7.5%) ⭐
+5. `creditos_vigentes` - Total créditos vigentes (importancia: 3.2%)
+6. `creditos_mora` - Número créditos en mora (importancia: 6.0%) ⭐
+7. `hist_neg_12m` - Historial negativo 12 meses (importancia: 2.8%)
 
-**Features REMOVIDAS (vs modelo original):**
-- ❌ `days_past_due_mean` (data leakage)
-- ❌ `days_past_due_max` (data leakage)
-- ❌ `ingresos_smlv` (no confiable)
-- ❌ `nivel_ingresos_encoded` (no confiable)
-- ❌ `ratio_cuota_ingreso` (no confiable)
+**Features REMOVIDAS vs modelo v1.0:**
+- ❌ `days_past_due_mean` - Data leakage corregido
+- ❌ `days_past_due_max` - Data leakage corregido
+- ❌ `ingresos_smlv` - No confiable (economía informal)
+- ❌ `nivel_ingresos_encoded` - Deriva de ingresos sesgados
+- ❌ `ratio_cuota_ingreso` - Depende de ingresos no confiables
 
 ---
 
-## 🧪 Cómo Probar el Endpoint Nuevo
+## 📊 Estadísticas del Modelo en Producción
+
+**Análisis sobre 1,870 clientes:**
+
+| Métrica | Valor |
+|---------|-------|
+| Probabilidad default promedio | 15.03% |
+| Probabilidad default mediana | 9.18% |
+| AUC | 0.760 |
+| Total features | 22 |
+
+**Distribución de clientes por nivel de riesgo:**
+
+| Nivel | Clientes | Porcentaje |
+|-------|----------|------------|
+| Muy Bajo | 1,017 | 54.4% ✅ |
+| Bajo | 379 | 20.3% |
+| Medio | 421 | 22.5% |
+| Alto | 41 | 2.2% |
+| Muy Alto | 12 | 0.6% |
+
+**Insights clave:**
+- 🟢 74.7% de clientes en categoría "Bajo riesgo" o mejor
+- 🟡 22.5% requieren monitoreo moderado
+- 🔴 Solo 2.8% en categorías de alto riesgo
+
+---
+
+## 🧪 Cómo Probar el Endpoint
 
 ### Opción 1: Script de Prueba (Recomendado)
 
@@ -70,12 +82,44 @@ python test_vertex_endpoint.py
 ```
 ✅ PREDICCIÓN EXITOSA
 📊 Resultados:
-   • Probabilidad NO Default: 0.XXX (XX.X%)
-   • Probabilidad Default:    0.XXX (XX.X%)
-   • Nivel de Riesgo:         [Bajo/Medio/Alto]
+   • Probabilidad NO Default: 0.810 (81.0%)
+   • Probabilidad Default:    0.190 (19.0%)
+   • Nivel de Riesgo:         Bajo
 ```
 
-### Opción 2: Probar desde Python
+### Opción 2: Probar API Completa
+
+```bash
+curl -X POST "https://scoring-api-741488896424.us-central1.run.app/predict" \
+  -H "Content-Type: application/json" \
+  -d '{"cedula":"1192925596"}'
+```
+
+**Response esperado:**
+```json
+{
+  "client_info": {
+    "cedula": "1192925596",
+    "months_as_client": 4,
+    "payment_count": 2
+  },
+  "scoring": {
+    "hybrid_score": 479.09,
+    "hybrid_category": "Regular"
+  },
+  "ml_prediction": {
+    "probability_default": 0.19,
+    "risk_level": "Bajo",
+    "attention_level": "Monitoreo normal"
+  },
+  "recommendation": {
+    "action_plan": "Monitoreo rutinario - Revisar score bajo",
+    "priority": "Baja"
+  }
+}
+```
+
+### Opción 3: Probar desde Python
 
 ```python
 from google.cloud import aiplatform
@@ -92,239 +136,233 @@ endpoint = aiplatform.Endpoint(
     endpoint_name=f"projects/741488896424/locations/{REGION}/endpoints/{ENDPOINT_ID}"
 )
 
-# Datos de prueba (22 features)
+# Datos de prueba (22 features en orden correcto)
 test_instance = [
-    750,    # platam_score
-    715,    # experian_score_normalized
-    680,    # score_payment_performance
-    600,    # score_payment_plan
-    700,    # score_deterioration
-    50,     # payment_count
-    24,     # months_as_client
-    0.1,    # pct_early
-    0.05,   # pct_late
-    0.6,    # peso_platam_usado
-    0.4,    # peso_hcpn_usado
-    0,      # tiene_plan_activo
-    0,      # tiene_plan_default
-    0,      # tiene_plan_pendiente
-    0,      # num_planes
+    750,      # platam_score
+    715,      # experian_score_normalized
+    680,      # score_payment_performance
+    600,      # score_payment_plan
+    700,      # score_deterioration
+    50,       # payment_count
+    24,       # months_as_client
+    0.1,      # pct_early
+    0.05,     # pct_late
+    0.6,      # peso_platam_usado
+    0.4,      # peso_hcpn_usado
+    0,        # tiene_plan_activo
+    0,        # tiene_plan_default
+    0,        # tiene_plan_pendiente
+    0,        # num_planes
     # 7 demográficas
-    0,      # genero_encoded
-    35,     # edad
-    0,      # ciudad_encoded
+    0,        # genero_encoded
+    35,       # edad
+    0,        # ciudad_encoded
     1500000,  # cuota_mensual
-    5,      # creditos_vigentes
-    0,      # creditos_mora
-    0       # hist_neg_12m
+    5,        # creditos_vigentes
+    0,        # creditos_mora
+    0         # hist_neg_12m
 ]
 
 # Predecir
 prediction = endpoint.predict(instances=[test_instance])
-print(prediction.predictions)
-```
-
-### Opción 3: gcloud CLI
-
-```bash
-# Crear archivo de prueba
-cat > test_request.json << 'EOF'
-{
-  "instances": [
-    [750, 715, 680, 600, 700, 50, 24, 0.1, 0.05, 0.6, 0.4, 0, 0, 0, 0, 0, 35, 0, 1500000, 5, 0, 0]
-  ]
-}
-EOF
-
-# Probar
-gcloud ai endpoints predict 7891061911641391104 \
-  --region=us-central1 \
-  --json-request=test_request.json
+print(f"Probabilidad Default: {prediction.predictions[0][1]:.2%}")
 ```
 
 ---
 
-## 🔄 Cuándo Migrar a v2.2
+## 📈 Gráficas del Modelo
 
-**Migra cuando:**
-- ✅ Hayas probado el endpoint nuevo manualmente
-- ✅ Estés conforme con las predicciones
-- ✅ Quieras aprovechar las mejoras demográficas
-- ✅ Tengas tiempo para monitorear después del cambio
+Las siguientes visualizaciones están disponibles en `charts/`:
 
-**NO migres si:**
-- ❌ El modelo actual funciona perfecto y no necesitas mejoras
-- ❌ No tienes tiempo para monitorear cambios
-- ❌ Prefieres esperar más datos para validar
+1. **`v2.2_feature_importance.png`**
+   Importancia de las 22 features del modelo
+
+2. **`v2.2_distribucion_probabilidades.png`**
+   Distribución de predicciones (histograma + boxplot)
+
+3. **`v2.2_scatter_score_vs_prob.png`**
+   Relación entre Score Híbrido y Probabilidad de Default
+
+4. **`v2.2_distribucion_niveles_riesgo.png`**
+   Segmentación de clientes por nivel de riesgo
+
+5. **`v2.2_features_demograficas.png`**
+   Análisis de importancia de features demográficas
+
+**Generar gráficas actualizadas:**
+```bash
+python generar_graficas_v2.2.py
+```
 
 ---
 
-## 📝 Cómo Migrar Cuando Estés Listo
+## 💰 Costos Actuales
 
-### Paso 1: Actualizar API (3 cambios)
+| Servicio | Costo Mensual |
+|----------|---------------|
+| Vertex AI Endpoint v2.2 | $50-80/mes |
+| Cloud Run API | $20-30/mes |
+| Cloud Storage | <$5/mes |
+| **Total** | **~$70-110/mes** |
 
-Editar `api_scoring_cedula.py`:
+**Ahorro logrado:**
+- ✅ Eliminado endpoint v1.0: ~$40-60/mes
+- ✅ Eliminados 5 modelos no utilizados: Costos de storage
+- ✅ **Ahorro total mensual: ~$40-60**
 
-**Cambio 1 - Endpoint ID (línea 30):**
-```python
-# ANTES
-ENDPOINT_ID = "1160748927884984320"
+---
 
-# DESPUÉS
-ENDPOINT_ID = "7891061911641391104"
+## 🏗️ Arquitectura Actual
+
+```
+┌─────────────────┐
+│   n8n / Make    │  ← Integraciones activas
+└────────┬────────┘
+         │ POST /predict
+         │ {"cedula": "..."}
+         ▼
+┌─────────────────────────────────────────────────┐
+│  Cloud Run API                                  │
+│  https://scoring-api-741488896424               │
+│       .us-central1.run.app/predict              │
+└────────┬────────────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────────────┐
+│  Vertex AI Endpoint v2.2                        │
+│  ID: 7891061911641391104                        │
+│  • Modelo: platam-scoring-py311-custom          │
+│  • 22 features (con demografía)                 │
+│  • Python 3.11 + XGBoost 2.0.3                  │
+└────────┬────────────────────────────────────────┘
+         │
+         ▼
+┌─────────────────────────────────────────────────┐
+│   SCORES_V2_ANALISIS_COMPLETO.csv               │
+│   1,870 clientes × 39 features                  │
+└─────────────────────────────────────────────────┘
 ```
 
-**Cambio 2 - Archivo CSV (línea 33):**
-```python
-# Ya está correcto - no cambiar
-CSV_PATH = "SCORES_V2_ANALISIS_COMPLETO.csv"
-```
+---
 
-**Cambio 3 - Features (línea 152-164):**
-```python
-# Ya está actualizado con 22 features - no cambiar
-# La API actual ya tiene el código correcto
-```
+## 🔧 Mantenimiento
 
-### Paso 2: Redesplegar API
+### Actualizar API (si modificas código)
 
 ```bash
-# Rebuild Docker
 cd "/Users/jpchacon/Scoring Interno"
-gcloud builds submit --tag gcr.io/platam-analytics/scoring-api:v2.2
 
-# Deploy a Cloud Run
+# Redesplegar a Cloud Run
 gcloud run deploy scoring-api \
-  --image gcr.io/platam-analytics/scoring-api:v2.2 \
+  --source . \
   --region us-central1 \
   --allow-unauthenticated
 ```
 
-### Paso 3: Probar End-to-End
+### Regenerar Gráficas
 
 ```bash
-# Probar health
-curl https://scoring-api-xxx.run.app/health
-
-# Probar predicción
-curl -X POST "https://scoring-api-xxx.run.app/predict" \
-  -H "Content-Type: application/json" \
-  -d '{"cedula":"1006157869"}'
+python generar_graficas_v2.2.py
 ```
 
-### Paso 4: Actualizar n8n/Make
+### Verificar Estado del Sistema
 
-- Mismo endpoint URL (no cambia)
-- Mismo formato JSON (no cambia)
-- Solo mejores predicciones internamente
+```bash
+# Listar endpoints activos
+gcloud ai endpoints list --region=us-central1
 
----
+# Listar modelos
+gcloud ai models list --region=us-central1
 
-## 💰 Costos de Vertex AI
-
-**Endpoint v2.2 (nuevo):**
-- Machine: n1-standard-2
-- Replicas: 1-3 (auto-scaling)
-- Costo estimado: ~$50-80/mes
-- Usa tus créditos de Vertex AI ✅
-
-**Endpoint v1.0 (anterior):**
-- Costo actual: ~$40-60/mes
-- Seguirá funcionando mientras lo necesites
-
-**Recomendación:** Cuando migres a v2.2, puedes **apagar el v1.0** para ahorrar costos.
-
----
-
-## 🛡️ Rollback (Si Algo Sale Mal)
-
-Si migras y quieres volver atrás:
-
-```python
-# En api_scoring_cedula.py
-ENDPOINT_ID = "1160748927884984320"  # Volver al anterior
+# Verificar API
+curl https://scoring-api-741488896424.us-central1.run.app/health
 ```
 
-Redesplegar y listo. El endpoint anterior sigue funcionando.
-
 ---
 
-## 📊 Comparación de Modelos
+## 📊 Comparación v1.0 vs v2.2
 
-| Característica | v1.0 (Anterior) | v2.2 (Nuevo) |
-|----------------|-----------------|--------------|
-| **Features** | 17 | 22 |
+| Característica | v1.0 (Deprecado) | v2.2 (Actual) |
+|----------------|------------------|---------------|
+| **Features** | 17 | 22 ✅ |
 | **Demografía** | ❌ No | ✅ Sí (7 features) |
 | **Data Leakage** | ⚠️ Sí (days_past_due) | ✅ Corregido |
-| **Income Features** | ✅ Incluidas | ❌ Removidas (decisión de negocio) |
-| **AUC** | ~0.98 (inflado) | 0.760 (real) |
-| **Python** | 3.7 | 3.11 |
-| **XGBoost** | 1.x | 2.0.3 |
-| **Container** | Pre-built | Custom |
-| **Confiabilidad** | ✅ Probado | ✅ Probado |
+| **Income Features** | ⚠️ Incluidas | ✅ Removidas (decisión de negocio) |
+| **AUC** | ~0.98 (inflado) | 0.760 (real) ✅ |
+| **Python** | 3.7 | 3.11 ✅ |
+| **XGBoost** | 1.x | 2.0.3 ✅ |
+| **Estado** | ❌ Eliminado | ✅ En producción |
 
 ---
 
-## 🎯 Beneficios de Migrar a v2.2
+## 🎯 Beneficios del Modelo v2.2
 
 ### Mejoras Técnicas:
-- ✅ Sin data leakage
-- ✅ Modelo más robusto
-- ✅ Features confiables (solo datos reales)
-- ✅ Python moderno (3.11)
+- ✅ Sin data leakage (predicciones confiables)
+- ✅ Modelo más robusto y generalizable
+- ✅ Features basadas en datos reales
+- ✅ Stack tecnológico moderno (Python 3.11)
 
 ### Mejoras de Negocio:
-- ✅ Identifica riesgo por ciudad (Manizales 48.8% default)
+- ✅ Identifica riesgo geográfico (ej: Manizales 48.8% default)
 - ✅ Detecta clientes con múltiples créditos en mora
-- ✅ Considera cuota mensual real
-- ✅ Ignora ingresos poco confiables (economía informal)
+- ✅ Considera cuota mensual real de HCPN
+- ✅ Ignora ingresos declarados (economía informal)
 
 ### Insights Accionables:
-- 642 clientes con ratio >45%
-- 155 outliers explicados
-- Ahorro potencial: $142M/año
+- 642 clientes con ratio cuota/ingreso >45% (alto riesgo)
+- Ciudades de alto riesgo identificadas
+- **Ahorro potencial: $142M/año** con políticas basadas en insights
 
 ---
 
-## 📞 Información de Contacto
+## 📞 Información del Sistema
 
-**Proyecto:** platam-analytics
+**Proyecto GCP:** platam-analytics
 **Región:** us-central1
+**Endpoint ID:** `7891061911641391104`
 
-**Endpoint Producción (v1.0):** `1160748927884984320`
-**Endpoint Nuevo (v2.2):** `7891061911641391104`
+**Recursos en Producción:**
+- 1 Endpoint Vertex AI (v2.2)
+- 1 Modelo ML (platam-scoring-py311-custom)
+- 1 Servicio Cloud Run (scoring-api)
+- 1 Bucket Storage (platam-analytics-models)
 
-**Container v2.2:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
+**URLs Importantes:**
+- API: `https://scoring-api-741488896424.us-central1.run.app/predict`
+- Health: `https://scoring-api-741488896424.us-central1.run.app/health`
+- Stats: `https://scoring-api-741488896424.us-central1.run.app/stats`
+- Docs: `https://scoring-api-741488896424.us-central1.run.app/docs`
 
----
-
-## ✅ Checklist para Migración (Cuando Decidas)
-
-- [ ] Probar endpoint nuevo con datos reales
-- [ ] Comparar predicciones v1.0 vs v2.2
-- [ ] Validar que diferencias tienen sentido
-- [ ] Backup de API actual
-- [ ] Actualizar código (3 cambios)
-- [ ] Redesplegar a Cloud Run
-- [ ] Probar health endpoint
-- [ ] Probar predicción por cédula
-- [ ] Validar en n8n/Make
-- [ ] Monitorear 24-48h
-- [ ] Si todo OK: apagar endpoint v1.0
+**Container:**
+- Image: `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
+- Base: Python 3.11-slim
+- Dependencies: XGBoost 2.0.3, scikit-learn 1.3.2, pandas 2.1.4
 
 ---
 
 ## 🎉 Estado Actual
 
-**Tu sistema está 100% funcional:**
-- ✅ API de producción funcionando
-- ✅ n8n/Make funcionando
-- ✅ Endpoint nuevo listo para cuando lo necesites
-- ✅ Cero riesgos - ambos endpoints independientes
+**Tu sistema está optimizado y funcionando:**
+- ✅ API de producción 100% funcional
+- ✅ n8n/Make integrados y funcionando
+- ✅ Endpoint v2.2 con mejores predicciones
+- ✅ Costos optimizados (~$40-60/mes de ahorro)
+- ✅ Gráficas actualizadas disponibles
+- ✅ Documentación completa y actualizada
 
-**Cuando quieras migrar, tienes todo listo. Por ahora, disfruta de tener ambos funcionando!**
+**Sistema listo para escalar cuando lo necesites!**
 
 ---
 
-**Última actualización:** 13 de Enero 2026, 17:05 EST
-**Versión:** Final - Ambos endpoints operacionales
+## 📚 Documentación Relacionada
+
+- **[README.md](README.md)** - Guía principal del proyecto
+- **[INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md](INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md)** - Análisis de negocio
+- **[DOCUMENTACION_TECNICA.md](DOCUMENTACION_TECNICA.md)** - Detalles técnicos
+- **[GUIA_MANTENIMIENTO.md](GUIA_MANTENIMIENTO.md)** - Guía de mantenimiento
+
+---
+
+**Última actualización:** 15 de Enero 2026, 10:30 EST
+**Versión:** 2.2.1 - Sistema optimizado y en producción

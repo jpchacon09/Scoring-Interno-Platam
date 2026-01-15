@@ -89,42 +89,28 @@ Output: Evaluación completa 360°
 
 ---
 
-## 🌐 Endpoints Disponibles
+## 🌐 Endpoint en Producción
 
-### 1️⃣ Endpoint v1.0 (Producción Actual) ✅
-
-**Endpoint ID:** `1160748927884984320`
-**Estado:** ✅ Funcionando en producción
-**Features:** 17 (sin demografía)
-**Python:** 3.7
-
-**Usado por:**
-- API actual en Cloud Run
-- Integraciones n8n/Make
-
-### 2️⃣ Endpoint v2.2 (Nuevo - Listo para Usar) ✅
+### ✅ Endpoint v2.2 (ACTIVO)
 
 **Endpoint ID:** `7891061911641391104`
-**Estado:** ✅ Desplegado y funcionando
-**Features:** 22 (con demografía)
+**Estado:** ✅ En producción desde enero 2026
+**Features:** 22 (15 originales + 7 demográficas)
 **Python:** 3.11 + XGBoost 2.0.3
 **Container:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
 
+**URL API:** `https://scoring-api-741488896424.us-central1.run.app/predict`
+
 **Ventajas:**
-- Sin data leakage
-- Datos demográficos
-- Predicciones más precisas
-- Modelo más robusto
+- ✅ Sin data leakage (days_past_due removido)
+- ✅ Features demográficas confiables
+- ✅ AUC: 0.760
+- ✅ Probabilidad default promedio: 15.03%
+- ✅ 54.4% clientes con riesgo muy bajo
 
-### 🔄 Compatibilidad
-
-**Tu API actual (v1.0) sigue funcionando perfectamente.**
-
-**Para migrar a v2.2:**
-- ✅ Mismo endpoint HTTP (sin breaking changes)
-- ✅ Mismo input JSON
-- ✅ Mismo output JSON
-- ✅ Solo mejores predicciones
+**Usado por:**
+- ✅ API actual en Cloud Run
+- ✅ Integraciones n8n/Make
 
 ---
 
@@ -175,13 +161,10 @@ gcloud ai models upload \
   --container-ports=8080
 ```
 
-### 3. Migrar API a v2.2 (Opcional)
+### 3. Actualizar API (si modificas el código)
 
-```python
-# En api_scoring_cedula.py, línea 30:
-ENDPOINT_ID = "7891061911641391104"  # Cambiar a v2.2
-
-# Redesplegar
+```bash
+# Redesplegar API a Cloud Run
 gcloud run deploy scoring-api \
   --source . \
   --region us-central1 \
@@ -286,69 +269,77 @@ Scoring Interno/
 
 ---
 
-## 🎯 Próximos Pasos
+## 🎯 Próximos Pasos Recomendados
 
-### Si quieres migrar a v2.2:
+### Optimización y Monitoreo
 
-1. **Probar endpoint nuevo**
+1. **Analizar gráficas del modelo**
    ```bash
-   python test_vertex_endpoint.py
-   python comparar_modelos.py
+   # Ver gráficas en charts/
+   open charts/v2.2_feature_importance.png
+   open charts/v2.2_distribucion_probabilidades.png
    ```
 
-2. **Validar predicciones**
-   - Comparar con v1.0
-   - Verificar que diferencias tengan sentido
+2. **Implementar políticas de negocio**
+   - Revisar `INSIGHTS_Y_POLITICAS_DE_NEGOCIO.md`
+   - Aplicar políticas por ciudad (ej: Manizales 48.8% default)
+   - Monitorear clientes con cuota/ingreso >45%
 
-3. **Actualizar API** (solo 1 línea)
-   ```python
-   ENDPOINT_ID = "7891061911641391104"
-   ```
+3. **Configurar monitoreo**
+   - Alertas de drift del modelo
+   - Seguimiento de performance
+   - Ver `GUIA_MANTENIMIENTO.md`
 
-4. **Redesplegar a Cloud Run**
-   ```bash
-   gcloud run deploy scoring-api --source .
-   ```
-
-5. **Monitorear 24-48h**
-
-6. **Apagar v1.0** (ahorrar ~$50/mes)
+4. **Actualización automática de datos** (futuro)
+   - Ver `future_implementation/ACTUALIZACION_AUTOMATICA.md`
 
 ---
 
-## 💰 Costos
+## 💰 Costos Actuales
 
-| Servicio | v1.0 | v2.2 | Total Actual |
-|----------|------|------|--------------|
-| Vertex AI Endpoint | $40-60/mes | $50-80/mes | $100-140/mes |
-| Cloud Run API | $20-30/mes | - | $20-30/mes |
-| **Total** | - | - | **~$130/mes** |
+| Servicio | Costo Mensual |
+|----------|---------------|
+| Vertex AI Endpoint v2.2 | $50-80/mes |
+| Cloud Run API | $20-30/mes |
+| **Total** | **~$70-110/mes** |
 
-**Después de migrar (solo v2.2):** ~$70-110/mes
+**Ahorro logrado:** ~$40-60/mes vs configuración anterior con 2 endpoints
 
 ---
 
-## 📞 Soporte
+## 📞 Información del Sistema
 
 **Proyecto:** platam-analytics
 **Región:** us-central1
-**Modelo v1.0:** Endpoint `1160748927884984320` ✅
-**Modelo v2.2:** Endpoint `7891061911641391104` ✅
+**Endpoint Activo:** `7891061911641391104` (v2.2)
+**API URL:** `https://scoring-api-741488896424.us-central1.run.app/predict`
+**Container:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
 
-**Container v2.2:** `gcr.io/platam-analytics/platam-scoring-py311:v2.2`
+**Recursos en Producción:**
+- 1 Endpoint Vertex AI (v2.2)
+- 1 Modelo ML (platam-scoring-py311-custom)
+- 1 Servicio Cloud Run (scoring-api)
 
 ---
 
 ## 📊 Changelog
 
-### v2.2 (Enero 2026) - Demografía sin Data Leakage
+### v2.2.1 (Enero 15, 2026) - Optimización de Recursos
+
+✅ Eliminado endpoint v1.0 (ahorro $40-60/mes)
+✅ Eliminados 5 modelos no utilizados
+✅ Gráficas actualizadas con modelo v2.2
+✅ README y documentación actualizados
+✅ Solo 1 endpoint en producción: v2.2
+
+### v2.2 (Enero 13, 2026) - Demografía sin Data Leakage
 
 ✅ Agregadas 7 features demográficas confiables
 ✅ Removido data leakage (days_past_due)
 ✅ Removidas features de ingresos (no confiables)
 ✅ Custom container Python 3.11 + XGBoost 2.0.3
-✅ AUC: 0.760 (sin trampa)
-✅ Insights de negocio: Manizales 48.8% default
+✅ AUC: 0.760
+✅ Desplegado a producción
 
 ### v1.0 (Diciembre 2025) - Sistema Base
 
@@ -356,8 +347,21 @@ Scoring Interno/
 ✅ Modelo ML con 17 features
 ✅ API en Cloud Run
 ✅ Integración n8n/Make
+❌ Deprecado enero 2026
 
 ---
 
-**🎉 Sistema listo para producción - Dos endpoints funcionando simultáneamente**
+## 📈 Gráficas del Modelo
+
+Las siguientes visualizaciones están disponibles en `charts/`:
+
+1. **`v2.2_feature_importance.png`** - Importancia de las 22 features
+2. **`v2.2_distribucion_probabilidades.png`** - Distribución de predicciones
+3. **`v2.2_scatter_score_vs_prob.png`** - Score vs Probabilidad de default
+4. **`v2.2_distribucion_niveles_riesgo.png`** - Segmentación por riesgo
+5. **`v2.2_features_demograficas.png`** - Análisis features demográficas
+
+---
+
+**🎉 Sistema optimizado y en producción - Un solo endpoint v2.2**
 
