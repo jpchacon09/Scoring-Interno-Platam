@@ -1,0 +1,6 @@
+functions-framework==3.*
+flask==3.0.0
+pymysql==1.1.0
+pandas==2.1.4
+numpy==1.26.2
+google-cloud-aiplatform==1.38.1
