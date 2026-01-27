@@ -85,51 +85,72 @@ def download_hcpn_from_s3(cedula: str) -> Optional[Dict]:
     """
     Descarga archivo HCPN específico de S3
 
-    Intenta múltiples formatos de nombre
+    Busca archivos que empiecen con hcpn_{cedula} (pueden tener fecha al final)
+    Ej: hcpn_66661722_20240115.json
     """
     s3_client = get_s3_client()
 
-    possible_keys = [
-        f'{S3_PREFIX}hcpn_{cedula}.json',
-        f'{S3_PREFIX}{cedula}.json',
-        f'{S3_PREFIX}HCPN_{cedula}.json',
-        f'hcpn_{cedula}.json',
-        f'{cedula}.json',
-        f'HCPN_{cedula}.json',
-    ]
+    # Listar archivos que empiecen con hcpn_{cedula}
+    prefix_to_search = f'{S3_PREFIX}hcpn_{cedula}'
 
-    for key in possible_keys:
-        try:
-            print(f"  Intentando descargar: s3://{S3_BUCKET}/{key}")
-            response = s3_client.get_object(Bucket=S3_BUCKET, Key=key)
-            hcpn_data = json.loads(response['Body'].read())
-            print(f"  ✓ HCPN descargado: {key}")
-            return hcpn_data
-        except s3_client.exceptions.NoSuchKey:
-            continue
-        except Exception as e:
-            print(f"  ⚠ Error en {key}: {e}")
-            continue
+    try:
+        print(f"  Buscando archivos con prefix: s3://{S3_BUCKET}/{prefix_to_search}*")
 
-    print(f"  ⚠ No se encontró HCPN para cédula {cedula}")
-    return None
+        response = s3_client.list_objects_v2(
+            Bucket=S3_BUCKET,
+            Prefix=prefix_to_search
+        )
+
+        if 'Contents' not in response or len(response['Contents']) == 0:
+            # Intentar sin el prefix ppay/prod/ (por si está en raíz)
+            prefix_to_search_root = f'hcpn_{cedula}'
+            print(f"  No encontrado, intentando sin prefix: s3://{S3_BUCKET}/{prefix_to_search_root}*")
+
+            response = s3_client.list_objects_v2(
+                Bucket=S3_BUCKET,
+                Prefix=prefix_to_search_root
+            )
+
+            if 'Contents' not in response or len(response['Contents']) == 0:
+                print(f"  ⚠ No se encontró ningún archivo HCPN para cédula {cedula}")
+                return None
+
+        # Tomar el archivo más reciente (por si hay varios)
+        files = sorted(response['Contents'], key=lambda x: x['LastModified'], reverse=True)
+        most_recent = files[0]
+        key = most_recent['Key']
+
+        print(f"  Encontrado: {key} (modificado: {most_recent['LastModified']})")
+
+        # Descargar el archivo
+        response = s3_client.get_object(Bucket=S3_BUCKET, Key=key)
+        hcpn_data = json.loads(response['Body'].read())
+
+        print(f"  ✓ HCPN descargado exitosamente: {key}")
+        return hcpn_data
+
+    except Exception as e:
+        print(f"  ⚠ Error descargando HCPN para cédula {cedula}: {e}")
+        return None
 
 
 def extract_hcpn_demographics(hcpn_data: Dict) -> Dict:
     """
-    Extrae datos demográficos de HCPN
+    Extrae datos demográficos de HCPN en formato Experian
 
-    Estructura típica de HCPN:
+    Estructura real de HCPN de Experian:
     {
-      "score": {"puntaje": 750, ...},
-      "id_data": {"identificacion": {...}, "edad": 32, ...},
-      "ingreso": 2000000,
-      "cuota_total": 450000,
-      "creditos": {
-        "principal": {
-          "credito_vigentes": 5,
-          "creditos_actuales_negativos": 1,
-          "hist_neg_ult_12_meses": 0
+      "Informes": {
+        "Informe": {
+          "Score": {"@puntaje": 796.0, ...},
+          "NaturalNacional": {
+            "@genero": 3,
+            "Edad": {"@min": 36, "@max": 45},
+            "Identificacion": {"@ciudad": "BOGOTA", ...}
+          },
+          "CuentaCartera": [...],
+          "TarjetaCredito": [...],
+          ...
         }
       }
     }
@@ -137,51 +158,150 @@ def extract_hcpn_demographics(hcpn_data: Dict) -> Dict:
     demographics = {}
 
     try:
-        # Score Experian
-        if 'score' in hcpn_data and 'puntaje' in hcpn_data['score']:
-            demographics['experian_score'] = float(hcpn_data['score']['puntaje'])
-        elif 'score_experian' in hcpn_data and 'puntaje' in hcpn_data['score_experian']:
-            demographics['experian_score'] = float(hcpn_data['score_experian']['puntaje'])
+        # Navegar a la estructura base
+        informe = hcpn_data.get('Informes', {}).get('Informe', {})
+
+        if not informe:
+            print("  ⚠ Estructura HCPN inválida: no se encontró 'Informes.Informe'")
+            return {
+                'experian_score': 0,
+                'edad': 35,
+                'genero': 'M',
+                'ciudad': 'UNKNOWN',
+                'cuota_mensual': 0,
+                'creditos_vigentes': 0,
+                'creditos_mora': 0,
+                'hist_neg_12m': 0
+            }
+
+        # 1. Score Experian
+        score = informe.get('Score', {})
+        if '@puntaje' in score:
+            demographics['experian_score'] = float(score['@puntaje'])
         else:
             demographics['experian_score'] = 0
+            print("  ⚠ No se encontró score en HCPN")
 
-        # Edad
-        if 'id_data' in hcpn_data and 'edad' in hcpn_data['id_data']:
-            demographics['edad'] = int(hcpn_data['id_data']['edad'])
-        elif 'edad' in hcpn_data:
-            demographics['edad'] = int(hcpn_data['edad'])
+        # 2. Datos de persona natural
+        natural = informe.get('NaturalNacional', {})
+
+        # Edad (promedio entre min y max)
+        edad_info = natural.get('Edad', {})
+        if '@min' in edad_info and '@max' in edad_info:
+            edad_min = int(edad_info['@min'])
+            edad_max = int(edad_info['@max'])
+            demographics['edad'] = int((edad_min + edad_max) / 2)
         else:
-            demographics['edad'] = 35  # Default
+            demographics['edad'] = 35
+            print("  ⚠ No se encontró edad en HCPN")
 
-        # Género
-        if 'id_data' in hcpn_data and 'genero' in hcpn_data['id_data']:
-            demographics['genero'] = hcpn_data['id_data']['genero']
-        elif 'genero' in hcpn_data:
-            demographics['genero'] = hcpn_data['genero']
+        # Género (Experian usa código: 1=M, 2=F, 3=Otro)
+        genero_codigo = natural.get('@genero')
+        if genero_codigo == '1' or genero_codigo == 1:
+            demographics['genero'] = 'M'
+        elif genero_codigo == '2' or genero_codigo == 2:
+            demographics['genero'] = 'F'
+        elif genero_codigo == '3' or genero_codigo == 3:
+            demographics['genero'] = 'F'  # Asumimos F por defecto
         else:
-            demographics['genero'] = 'M'  # Default
+            demographics['genero'] = 'M'
 
-        # Cuota mensual
-        if 'cuota_total' in hcpn_data:
-            demographics['cuota_mensual'] = float(hcpn_data['cuota_total'])
-        else:
-            demographics['cuota_mensual'] = 0
+        # Ciudad de expedición de la cédula
+        identificacion = natural.get('Identificacion', {})
+        ciudad = identificacion.get('@ciudad', 'UNKNOWN')
+        demographics['ciudad'] = ciudad if ciudad else 'UNKNOWN'
 
-        # Créditos vigentes
-        if 'creditos' in hcpn_data and 'principal' in hcpn_data['creditos']:
-            principal = hcpn_data['creditos']['principal']
-            demographics['creditos_vigentes'] = int(principal.get('credito_vigentes', 0))
-            demographics['creditos_mora'] = int(principal.get('creditos_actuales_negativos', 0))
-            demographics['hist_neg_12m'] = int(principal.get('hist_neg_ult_12_meses', 0))
-        else:
-            demographics['creditos_vigentes'] = 0
-            demographics['creditos_mora'] = 0
-            demographics['hist_neg_12m'] = 0
+        # 3. Análisis de créditos vigentes y mora
+        cuenta_cartera = informe.get('CuentaCartera', [])
+        tarjeta_credito = informe.get('TarjetaCredito', [])
 
-        print(f"  ✓ Datos demográficos extraídos: edad={demographics.get('edad')}, score={demographics.get('experian_score')}")
+        creditos_vigentes = 0
+        creditos_mora = 0
+        cuota_total = 0
+        hist_neg_12m = 0
+
+        # Analizar cuentas de cartera
+        for cuenta in cuenta_cartera:
+            # Cuenta como vigente si no está cerrada
+            estado_cuenta = cuenta.get('@estadoCuenta', '')
+            if estado_cuenta != '2':  # 2 = cerrada
+                creditos_vigentes += 1
+
+            # Contar mora (calificación > 1 indica mora)
+            calificacion = cuenta.get('@calificacion', '0')
+            try:
+                if int(calificacion) > 1:
+                    creditos_mora += 1
+            except:
+                pass
+
+            # Sumar cuota mensual
+            cuota = cuenta.get('@valorCuota', 0)
+            try:
+                cuota_total += float(cuota)
+            except:
+                pass
+
+            # Verificar comportamiento últimos 12 meses (últimos 12 caracteres)
+            comportamiento = cuenta.get('@comportamiento', '')
+            if comportamiento and len(comportamiento) >= 12:
+                ultimos_12 = comportamiento[-12:]
+                # Si hay alguna letra diferente de 'N' (normal), hay historia negativa
+                if any(c not in ['N', ' ', '-'] for c in ultimos_12):
+                    hist_neg_12m += 1
+
+        # Analizar tarjetas de crédito
+        for tarjeta in tarjeta_credito:
+            # Cuenta como vigente si no está cerrada
+            estado = tarjeta.get('@estadoCuenta', '')
+            if estado != '2':  # 2 = cerrada
+                creditos_vigentes += 1
+
+            # Contar mora
+            calificacion = tarjeta.get('@calificacion', '0')
+            try:
+                if int(calificacion) > 1:
+                    creditos_mora += 1
+            except:
+                pass
+
+            # Sumar cuota mínima o pago mensual
+            cuota = tarjeta.get('@valorCuota', 0)
+            try:
+                cuota_total += float(cuota)
+            except:
+                pass
+
+            # Verificar comportamiento últimos 12 meses
+            comportamiento = tarjeta.get('@comportamiento', '')
+            if comportamiento and len(comportamiento) >= 12:
+                ultimos_12 = comportamiento[-12:]
+                if any(c not in ['N', ' ', '-'] for c in ultimos_12):
+                    hist_neg_12m += 1
+
+        demographics['cuota_mensual'] = cuota_total
+        demographics['creditos_vigentes'] = creditos_vigentes
+        demographics['creditos_mora'] = creditos_mora
+        demographics['hist_neg_12m'] = hist_neg_12m
+
+        print(f"  ✓ Datos HCPN extraídos: score={demographics['experian_score']}, edad={demographics['edad']}, "
+              f"ciudad={demographics['ciudad']}, créditos={creditos_vigentes}, mora={creditos_mora}")
 
     except Exception as e:
-        print(f"  ⚠ Error extrayendo demografía: {e}")
+        print(f"  ⚠ Error extrayendo demografía de HCPN: {e}")
+        import traceback
+        traceback.print_exc()
+        # Retornar valores por defecto en caso de error
+        demographics = {
+            'experian_score': 0,
+            'edad': 35,
+            'genero': 'M',
+            'ciudad': 'UNKNOWN',
+            'cuota_mensual': 0,
+            'creditos_vigentes': 0,
+            'creditos_mora': 0,
+            'hist_neg_12m': 0
+        }
 
     return demographics
 
